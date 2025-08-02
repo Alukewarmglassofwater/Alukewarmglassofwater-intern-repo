@@ -21,7 +21,7 @@
 
 - I chose this principle as for me I belive I will get the most out of physically interacting with team members is what will identify the mistakes in my work and bring out the best in my abilities.
 
-Notes:
+## Notes:
 
 #### What is Agile, and how does it differ from traditional project management?
 
