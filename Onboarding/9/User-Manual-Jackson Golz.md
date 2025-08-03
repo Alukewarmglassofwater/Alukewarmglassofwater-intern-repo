@@ -40,7 +40,7 @@
 
 #### My Role
 
-- I am working on backend developer tasks
+- I am working on backend developer tasks. I want to make it clear that I am not a developer and only have 3 semesters worth of light programming experience. I seeked out this internship after recognising that my coding skills were lacking and hope to improve upon them as a result.
 - The days and times I work are tuesday and thursday. I prefer to work early morning so I have my evenings to unwind. 
 
 ---
