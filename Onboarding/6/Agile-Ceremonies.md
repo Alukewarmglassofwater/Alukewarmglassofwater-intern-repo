@@ -21,7 +21,10 @@
 **Reflection**
 
 - How do Agile ceremonies help with communication and alignment?
+-- They foster open communication and allow for periods of reflection to better align the project tasks with what is required from the stakeholders of the project. 
+
 - Which ceremony do you think is most important for your role, and why?
+-- Daily standups will be the most important for my role as they are where I will be able to ask for help with blockers I run into while working on my tasks. Furthermore, they also will allow team members to re-direct my approach to a particular problem if I am going down the wrong path. 
 
 **Task**
 
