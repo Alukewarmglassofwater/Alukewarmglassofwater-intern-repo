@@ -45,7 +45,7 @@
 -- Done
 
 - Document one new cyber security habit you will follow at Focus Bear.
--- Will use 24 character passwords for all work accounts as well as 2FA. 
+-- Will use 24 character passwords for all work accounts as well as 2FA. Will also report suspicous activity immeditaelly to the appropriate party. 
 
 
 
