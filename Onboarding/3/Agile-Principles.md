@@ -37,3 +37,8 @@
 
 #### Why does Focus Bear lean towards Kanban instead of Scrum?
 - FocusBear operates with a small team. As a result, the freedom Kanban offers compared to a more structured Scrum allows team members to contribute to the project and have ownership over their work. The diversity all members bring allows for further feature development rather than being limited to the vision of a single stakeholder. 
+
+
+# Example of when I've benefitted from face-to-face collaboration
+
+Last semester I was the project manager for a capstone project. I found that face-to-face collaboration is when the real work was completed and any issues were sorted out. If we didn't do this I found that issues did not get resolved and individuals failed to complete the tasks that were assigned to them (weren't held accountable).
