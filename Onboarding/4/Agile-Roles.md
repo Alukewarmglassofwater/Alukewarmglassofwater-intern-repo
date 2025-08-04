@@ -65,5 +65,5 @@ As a developer I take user/technical requirements and integrate them into softwa
 
 
 # Identify one other role you frequently collaborate with and describe how you can improve teamwork with them.
-- I would frequently collaborate with the product manager to make sure what I am working on aligns with their expectations of the feature/product. This will mainly be through daily standups. 
+- I would frequently collaborate with the product manager to make sure what I am working on aligns with their expectations of the feature/product. This will mainly be through daily standups. During my last semester of university, I was the project manager for my team. To ensure that my project was on track to meet the stakeholder requirements, I would frequently discuss project progression and what we were working on with them. Any blockers or confusion I had would be revealed to the stakeholder and we would work together to develop a solution and or a plan to tackle it going forward. 
 
