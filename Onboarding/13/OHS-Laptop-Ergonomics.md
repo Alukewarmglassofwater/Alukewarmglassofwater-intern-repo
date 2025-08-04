@@ -52,4 +52,10 @@
 - Did today and it worked well to keep me fresh and alert.
 
 ## Document at least one workspace change or habit adjustment you made.
-- Adjusted monitor heights and chair to be more ergonomic.
+- Adjusted monitor heights and chair to be more ergonomic. Makes interacting with my machine more straightforward and takes the straight off my neck and back. Making it easier to conduct longer work sessions. 
+
+Photo proof:
+
+![alt text](20250804_130714.jpg) - Desk
+
+![alt text](20250804_130725.jpg) - Chair

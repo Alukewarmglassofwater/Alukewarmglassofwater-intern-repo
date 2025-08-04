@@ -28,10 +28,12 @@
 **Task**
 
 - Identify one task you can improve using an AI tool, and try it out.
--- Ask an AI tool where a potential bug in my code is. Check for syntax errors etc.
+-- Ask an AI tool what is the correct splitting for a subnet.
 
 - Review the AI-generated output critically—did it require editing or fact-checking?
--- In this case it dod not require fact-checking. However, I have had instances in the past where the output was hallucinated and did not make sense with the data I gave it.
+-- In this case it did require fact-checking as the output was incorrect. Image included. 
+![alt text](image.png)
+I learn't that you cannot always trust the output AI gives you even if it is adamant it is correct. Ai has the potential to hallucinate and do its best to convince you its output is correct even when it isn't.
 
  Document one best practice you will follow when using AI tools at Focus Bear.
 -- Double-check AI generated output is accurate and valid before making use of it either in the workplace or sharing it with other team members. 

@@ -41,7 +41,7 @@
 --- Only give access to those that require said data
 
 -- Share
---- Use secure communications platforms
+--- Use secure communications platforms such as microsoft teams in appropriate channels. If data is sensitive enough then possibly share it in person via a flash drive or over the network
 --- Do not use regular insecure messaging/communication platforms
 --- Make sure who you are communicating with is the individual you think it is
 
@@ -65,3 +65,8 @@
 
 - Document at least one key learning or security measure you will implement.
 -- I will minimise the data I have access too and only request what is necessary for me to complete the tasks at hand
+
+# Screenshot proof:
+![alt text](image.png) - Device lock screen settings
+
+![alt text](image-1.png) - Use of a VPN
