@@ -42,10 +42,15 @@
 -- Use a password manager.
 
 - Set up your computer and phone to automatically lock (require a password or biometric login) if you are away for more than a few minutes.
--- Done
+
+![alt text](473851098-ba6fe140-0243-4e38-a52f-17d217b0de5b.jpeg)
 
 - Document one new cyber security habit you will follow at Focus Bear.
 -- Will use 24 character passwords for all work accounts as well as 2FA. Will also report suspicous activity immeditaelly to the appropriate party. 
+
+e.g 24 character password creation.
+
+![alt text](image.png)
 
 
 

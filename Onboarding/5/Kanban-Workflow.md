@@ -26,10 +26,14 @@
 - Check out Focus Bear’s Kanban board and note how tasks are structured. (Hint: Look in GitHub Projects.)
 -- Is not populated and I am unable to edit it. Made my own board on my own repo as a result. 
 
+![alt text](473850605-6581a9a9-b0f1-4ca2-be3d-6326999dd4f2-1.png)
+
 
 - Move at least one task through the Kanban process and update its status correctly.
--- See above
 
+![alt text](image.png)
+
+![alt text](image-1.png)
 
 - Identify one way you can improve task tracking in your role.
 -- Tasks will be regularly updated on the Kanban board as I progress through the task. Team members will be regularly updated with my progress during daily standups.
