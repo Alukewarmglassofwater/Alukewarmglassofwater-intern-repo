@@ -12,7 +12,9 @@
 
 
 # How can you debug background jobs that don’t run in a typical request-response cycle?
+I would add a log to the console line after the line of code runs, capturing the variables it modifies and or add a debugger; line so the code stops at the breakpoint. That way you can see how the code is modifying the varaibles/database values before they are requested/resonded and therefore catch bugs outside of vieweing the raw http request/reponse.
 
+ Attempting to debug my basic NestJS project I found that VSCode will sometime move breakpoints around. After googling this it seems to be due to source-map mismatches between the compiled background JS code and its Typescript equivalent.  
 
 
 
