@@ -68,3 +68,19 @@
 ### What surprised you while testing these commands?
 
 Git cherry-pick was confusing. I cherry-picked a commit from a new branch into main, but later when I restored that file using git checkout, I still got the version from the cherry-picked commit—even though I thought the change was already integrated.
+
+
+# Understand git bisect:
+
+Git bisect evidence:
+![alt text](image.png)
+
+### What does git bisect do?
+`git bisect` helps you find the exact commit that introduced a bug by going through your commit history. You mark one known good commit and one known bad commit, and Git checks out commits in between for you to test. Based on your good/bad input it helps you find the commit where the bug was introduced.
+
+### When would you use it in a real-world debugging situation?
+- A bug appeared, but you don't know  when it was introduced.
+- The project has a complex commit history and manually reviewing each one would take too long.
+
+### How does it compare to manually reviewing commits?
+- It uses a binary search approach, finding the buggy commit quicker than manually searching would. It also automatically checkout's your commits for you, reducing chance of human error. 
