@@ -39,4 +39,8 @@
     When would you use it in a real project (hint: these are all really important in long running projects with multiple developers)?
     What surprised you while testing these commands?
 
+<<<<<<< HEAD
     sneaky commit
+=======
+Anewchange
+>>>>>>> 4e24a49 (adfs)
