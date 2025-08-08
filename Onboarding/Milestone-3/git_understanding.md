@@ -85,4 +85,4 @@ Git bisect evidence:
 ### How does it compare to manually reviewing commits?
 - It uses a binary search approach, finding the buggy commit quicker than manually searching would. It also automatically checkout's your commits for you, reducing chance of human error. 
 
-a
+aa
