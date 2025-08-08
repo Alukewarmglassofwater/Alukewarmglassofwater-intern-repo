@@ -35,12 +35,36 @@
 
 # Advanced Git Commands & When to Use Them
 
-    What does each command do?
-    When would you use it in a real project (hint: these are all really important in long running projects with multiple developers)?
-    What surprised you while testing these commands?
 
-<<<<<<< HEAD
-    sneaky commit
-=======
-Anewchange
->>>>>>> 4e24a49 (adfs)
+### What does each command do?
+
+- git checkout main
+  Restores the version of a specific file from the main branch into your current branch. This overwrites the working directory copy of the file without affecting any other changes or files.
+
+- git cherry-pick <commit>  
+  Applies a specific commit from another branch onto your current branch. It brings in just that one commit's changes without merging the entire branch.
+
+- git log
+  Shows the commit history of the current branch. Useful for seeing what changes have been made, by whom, and when, along with commit messages.
+
+- git blame <file>  
+  Shows who last modified each line in a file and the corresponding commit hash. Useful for tracking down when and why a particular line was changed.
+
+  ---
+
+### When would you use it in a real project?
+
+- git cherry-pick 
+  Useful when you want to bring a specific bug fix or feature commit from one branch (e.g., `dev`) into another (e.g., `main`) without merging the entire branch. Especially helpful in hotfixes or long-lived branches.
+
+- git checkout  
+  Used constantly: to switch branches, restore specific files, or roll back changes from a different branch. Essential for managing context during development.
+
+- git stash  
+  Handy when you’re in the middle of work but need to quickly switch tasks, pull updates, or change branches without committing half-done changes.
+
+---
+
+### What surprised you while testing these commands?
+
+Git cherry-pick was confusing. I cherry-picked a commit from a new branch into main, but later when I restored that file using git checkout, I still got the version from the cherry-picked commit—even though I thought the change was already integrated.
