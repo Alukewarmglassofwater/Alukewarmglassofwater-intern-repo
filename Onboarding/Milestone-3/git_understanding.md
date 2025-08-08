@@ -32,3 +32,11 @@
 ### What happens if two people edit the same file on different branches?
 - If in different parts of the file, normally merged automatically.
 - If the edits are on the same line then Git will raise a merge conflict and the end user has to edit said line themselves to clear it.
+
+# Advanced Git Commands & When to Use Them
+
+    What does each command do?
+    When would you use it in a real project (hint: these are all really important in long running projects with multiple developers)?
+    What surprised you while testing these commands?
+
+    sneaky commit
