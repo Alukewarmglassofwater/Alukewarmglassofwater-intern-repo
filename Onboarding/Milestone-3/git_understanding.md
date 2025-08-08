@@ -100,3 +100,27 @@ Git bisect evidence:
 - Wastes time  searching through commit history to find why a bug has occured.
 - Increases the chance of reintroducing old bugs due to lack of context.
 - Slows down onboarding of new team members who rely on commit history to learn the codebase.
+
+
+This is something I'd like to integrate into the main code base please. 
+
+# Pull Requests
+
+### Why are PRs important in a team workflow?
+
+- Pull Requests provide a way for proposed changes to be looked (and bugs catched) by other team members before they are integrated.
+- All changes made to the codebase can be seen by others, aiding project transparency. 
+- They create a record of what was changed and why.
+
+### What makes a well-structured PR?
+
+- A clear and descriptive title that summarizes the change.
+- A detailed description explaining the purpose of the PR, what was changed, and why.
+- Possibly a reference to a bug/issue proposed on the repository.
+- Evidence of unit tests passing.
+
+### What did you learn from reviewing an open-source PR?
+
+- How in large projects such as Node, pull requests are formatted to a high standard whereas in smaller projects pull request quality suffers.
+- There are so many pull requests in large, multi-dev projects, it is obvious why clear requests and issue tracking is extremely important.
+- Short sharp messages if critique is required with evidence of the change/fix made in response.
