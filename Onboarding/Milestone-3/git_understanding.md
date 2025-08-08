@@ -12,3 +12,10 @@
 - When you've made multiple unrelated changes and want to commit them separately. You can stage just one group of changes now and come back to the others later.
 - When you're not done yet but want to save a clean version of certain files.
 - To carefully prepare a commit. 
+
+
+
+
+    Why is pushing directly to main problematic?
+    How do branches help with reviewing code?
+    What happens if two people edit the same file on different branches?
