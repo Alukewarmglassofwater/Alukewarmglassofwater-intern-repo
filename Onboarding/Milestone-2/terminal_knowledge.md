@@ -6,11 +6,11 @@ I chose the WSL Ubuntu terminal because it gives me a full Linux environment wit
 **What customizations (if any) did you make?**  
 - Had to edit bash .initrc to make sure SSH agent is running and keys were added everytime WSL starts or it fails to authenticate correctly with Github. 
 
-![alt text](image.png)
+![alt text](image2.png)
 
 - Used https://hinty.io/ivictbor/show-git-branch-in-bash-on-linux-windows-wsl-2-cygwin-prompt/ to show git branches in terminal.
 
-![alt text](image-1.png)
+![alt text](image3.png)
 
 **What was the most useful command you learned today?**  
 - `git checkout` – for switching branches  
