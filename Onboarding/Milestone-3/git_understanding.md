@@ -84,3 +84,19 @@ Git bisect evidence:
 
 ### How does it compare to manually reviewing commits?
 - It uses a binary search approach, finding the buggy commit quicker than manually searching would. It also automatically checkout's your commits for you, reducing chance of human error. 
+
+# Writing Meaningful Commit Messages
+
+### What makes a good commit message?
+- A clear and precise report of what was done and why it was made. Possibly referencing an issue number on the repo.
+- Follows a consistent format.
+
+### How does a clear commit message help in team collaboration?
+- Makes it easier for teammates to understand the purpose of a change without digging into the code.
+- Helps new devs understand project history.
+
+### How can poor commit messages cause issues later?
+- Makes debugging harder when you don’t know why a change was made.
+- Wastes time  searching through commit history to find why a bug has occured.
+- Increases the chance of reintroducing old bugs due to lack of context.
+- Slows down onboarding of new team members who rely on commit history to learn the codebase.
