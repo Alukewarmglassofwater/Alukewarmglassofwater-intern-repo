@@ -2,23 +2,23 @@
 
 ## Simplicity
 
--Follow the keep it simple stupid mentality. The easier it is to understand than the easier it is to fix.
+- Follow the keep it simple stupid mentality. The easier it is to understand than the easier it is to fix.
 
 ## Readability
 
-Write code so it can be understood easily from a first glance. E.g. correct indenting with variable names that follow a consistent format.
+- Write code so it can be understood easily from a first glance. E.g. correct indenting with variable names that follow a consistent format.
 
 ## Maintainability
 
--Possibly write own unit tests for code so, if people decide to add features in the future, your tests can be ran to determine if what they added breaks the original code logic.
+- Possibly write own unit tests for code so, if people decide to add features in the future, your tests can be ran to determine if what they added breaks the original code logic.
 
 ## Consistency
 
--A consistent format allows not only you, but others to write code asynchronously allowing the final code snippets to merge together seamlessly. Ideal for working with global teammembers such as is the case at FocusBear.
+- A consistent format allows not only you, but others to write code asynchronously allowing the final code snippets to merge together seamlessly. Ideal for working with global teammembers such as is the case at FocusBear.
 
 ## Efficiency
 
--Code is a simple as possible and only optimized if required. This helps your code hit the previous points mentioned. Overengineering simply distracts from the clean code principles.
+- Code is a simple as possible and only optimized if required. This helps your code hit the previous points mentioned. Overengineering simply distracts from the clean code principles.
 
 ### messy code
 
@@ -272,6 +272,6 @@ Vehicles.displayStock(`Cars`);
 ## How did refactoring improve maintainability?
 
 - The original code had two identical functions for fruits and vegetables, causing duplication.
-- The refactored version uses a dynamic method, `displayStock(parameter)`, inside an object.
+- The refactored version uses a dynamic method, displayStock(parameter), inside an object.
 - This allows any category to be handled with the same loop, making it easier to add new categories and update logic in one place.
 - As a result, the code is simpler, easier to expand, and faster to maintain.
