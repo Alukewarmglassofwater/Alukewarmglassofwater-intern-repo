@@ -275,3 +275,110 @@ Vehicles.displayStock(`Cars`);
 - The refactored version uses a dynamic method, displayStock(parameter), inside an object.
 - This allows any category to be handled with the same loop, making it easier to add new categories and update logic in one place.
 - As a result, the code is simpler, easier to expand, and faster to maintain.
+
+# Research common refactoring techniques
+
+# What is Refactoring?
+
+- The process of improving a codebase's structure and readability without changing its existing logic.
+
+## Common Refactoring Techniques according to https://www.codesee.io/learning-center/code-refactoring
+
+1. **Red-Green-Refactor** (TDD): write a failing test, make it pass, then clean up the code.
+2. **Refactoring by Abstraction**: pull common logic into reusable components or abstractions.
+3. **Composing**: build functionality by combining small, focused parts.
+4. **Simplifying Methods**: break down long methods into shorter, clearer ones.
+5. **Moving Features Between Objects**: relocate code to more appropriate places.
+6. **Preparatory Refactoring**: restructure code ahead of adding new features or making changes.
+
+## Overly complicated function (GTP generated):
+
+function loadUserAndPosts(userId) {
+// Fetch the user data from the server using their ID
+fetch(`/api/users/${userId}`)
+.then(res => {
+// If the HTTP status is not OK (e.g., 404 or 500), throw an error
+if (!res.ok) throw new Error('Failed to load user');
+// Otherwise, parse the response body as JSON
+return res.json();
+})
+.then(user => {
+// Log the user object to the console for debugging
+console.log('User:', user);
+
+      // Now fetch the user's posts using the user ID from the fetched data
+      fetch(`/api/users/${user.id}/posts`)
+        .then(res => {
+          // If posts request fails, throw an error
+          if (!res.ok) throw new Error('Failed to load posts');
+          // Parse the posts response as JSON
+          return res.json();
+        })
+        .then(posts => {
+          // Log the posts array to the console
+          console.log('Posts:', posts);
+
+          // Update the page with the user's name
+          document.getElementById('name').textContent = user.name;
+
+          // Show how many posts the user has
+          document.getElementById('count').textContent = posts.length;
+
+          // Render a list of post titles as <li> elements in the 'list' element
+          document.getElementById('list').innerHTML = posts
+            .map(p => `<li>${p.title}</li>`) // Convert each post into an <li> string
+            .join('');                       // Combine them into one string
+        })
+        .catch(err => {
+          // Handle any errors from loading the posts
+          console.error('Error loading posts:', err);
+          document.getElementById('error').textContent = 'Could not load posts.';
+        });
+    })
+    .catch(err => {
+      // Handle any errors from loading the user
+      console.error('Error loading user:', err);
+      document.getElementById('error').textContent = 'Could not load user.';
+    });
+
+}
+
+// Call the function to start fetching data for user with ID 42
+loadUserAndPosts(42);
+
+## Better function (re-written by me with GPT help for DOM and API handling):
+
+async function betterloadUserAndPosts() {
+try {
+const userData = await fetch(`/api/users/${userId}`)
+if (!userData.ok) throw new Error('User information failed to load');
+const user = await userData.json(); //wait for userData and parse into JSON
+
+const userPosts = await fetch(`/api/users/${user.id}/posts`);
+if (!userPosts.ok) throw new Error('User posts failed to load');
+const posts = await userPosts.json(); //wait for userPosts and parse into JSON
+
+document.getElementById('name').textContent = user.name; //username into DOM name field
+document.getElementById('count').textContent = posts.length; //post length parsed into DOM count. Possibly for amount of post fields to load
+document.getElementById('list').innerHTML = posts //parse posts JSON data into list html field
+.map(p => `<li>${p.title}</li>`) //map array object from p into html list string
+.join(''); //space between each list
+} catch (err) {
+console.error(err);
+document.getElementById('error').textContent = 'Could not load data.';
+}
+}
+
+# Reflection
+
+## Why is breaking down functions beneficial?
+
+- It takes, what appears at first, something really complicated (like the function GTP generated) and breaks it down into small, easily understandable segments.
+- Breaking down the above function made it understandable to a javascript beginner such as myself.
+
+## How did refactoring improve the structure of the code?
+
+- The nested thenables were removed, making the code easier to understand without the poor nesting.
+- The single try/catch reduces the amount of error catches required in the function.
+- Variable names re-written to make sense with what is actually being received by the function.
+- Placing DOM functionality at the end makes the logic flow make more sense then what was initially proposed.

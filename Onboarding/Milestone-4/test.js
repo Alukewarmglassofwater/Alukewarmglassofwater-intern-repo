@@ -61,3 +61,81 @@ GroceryStore.displayStock(`Vegetables`);
 const Vehicles = { ...GroceryStore, Cars: ['Suzuki', 'Mazda', 'Hyundai'] };
 
 Vehicles.displayStock(`Cars`);
+
+//GPT generated bad function
+
+function loadUserAndPosts(userId) {
+  // Fetch the user data from the server using their ID
+  fetch(`/api/users/${userId}`)
+    .then((res) => {
+      // If the HTTP status is not OK (e.g., 404 or 500), throw an error
+      if (!res.ok) throw new Error('Failed to load user');
+      // Otherwise, parse the response body as JSON
+      return res.json();
+    })
+    .then((user) => {
+      // Log the user object to the console for debugging
+      console.log('User:', user);
+
+      // Now fetch the user's posts using the user ID from the fetched data
+      fetch(`/api/users/${user.id}/posts`)
+        .then((res) => {
+          // If posts request fails, throw an error
+          if (!res.ok) throw new Error('Failed to load posts');
+          // Parse the posts response as JSON
+          return res.json();
+        })
+        .then((posts) => {
+          // Log the posts array to the console
+          console.log('Posts:', posts);
+
+          // Update the page with the user's name
+          document.getElementById('name').textContent = user.name;
+
+          // Show how many posts the user has
+          document.getElementById('count').textContent = posts.length;
+
+          // Render a list of post titles as <li> elements in the 'list' element
+          document.getElementById('list').innerHTML = posts
+            .map((p) => `<li>${p.title}</li>`) // Convert each post into an <li> string
+            .join(''); // Combine them into one string
+        })
+        .catch((err) => {
+          // Handle any errors from loading the posts
+          console.error('Error loading posts:', err);
+          document.getElementById('error').textContent =
+            'Could not load posts.';
+        });
+    })
+    .catch((err) => {
+      // Handle any errors from loading the user
+      console.error('Error loading user:', err);
+      document.getElementById('error').textContent = 'Could not load user.';
+    });
+}
+
+// Call the function to start fetching data for user with ID 42
+loadUserAndPosts(42);
+
+//better function
+
+async function betterloadUserAndPosts() {
+  try {
+    const userData = await fetch(`/api/users/${userId}`);
+    if (!userData.ok) throw new Error('User information failed to load');
+    const user = await userData.json(); //wait for userData and parse into JSON
+
+    const userPosts = await fetch(`/api/users/${user.id}/posts`);
+    if (!userPosts.ok) throw new Error('User posts failed to load');
+    const posts = await userPosts.json(); //wait for userPosts and parse into JSON
+
+    document.getElementById('name').textContent = user.name; //username into DOM name field
+    document.getElementById('count').textContent = posts.length; //post length parsed into DOM count. Possibly for amount of post fields to load
+    document.getElementById('list').innerHTML = posts //parse posts JSON data into list html field
+      .map((p) => `<li>${p.title}</li>`) //map array object from p into html list string
+      .join(''); //space between each list
+  } catch (err) {
+    console.error(err);
+    document.getElementById('error').textContent = 'Could not load data.';
+  }
+}
