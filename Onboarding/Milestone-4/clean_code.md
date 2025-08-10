@@ -207,3 +207,71 @@ show_error("&#x2620; Unable to get the image");
 - Removed 3 lines of logic into their own functions (new to JS/programming hence the simplicity of the example)
 - These 3 helper functions are named by their purpose, making code readability even easier.
 - Code is more modular. Easy to expand on the functionality of the helper functions as it isolates any potential bugs if they do occur.
+
+# Research the "Don't Repeat Yourself" (DRY) principle:
+
+- Avoid duplication.
+- Reduce redundancy, promote efficiency.
+- Coincides with the 5 clean coding principles
+
+# Find a section of code in your test repo with unnecessary repetition (GPT generated).
+
+## Bad duplicated function:
+
+myFunc();
+
+function printFruits() {
+const fruits = ['apple', 'banana', 'cherry'];
+for (let i = 0; i < fruits.length; i++) {
+console.log('Fruit #' + (i + 1) + ': ' + fruits[i]);
+}
+}
+
+function printVegetables() {
+const vegetables = ['carrot', 'potato', 'broccoli'];
+for (let i = 0; i < vegetables.length; i++) {
+console.log('Vegetable #' + (i + 1) + ': ' + vegetables[i]);
+}
+}
+
+## Refactored function by me:
+
+const GroceryStore = {
+Fruits: ['apple', 'banana', 'cherry'],
+Vegetables: ['carrot', 'potato', 'broccoli'],
+
+displayStock: function (parameter) {
+let items, label;
+
+    items = this[parameter]; //gets items from array
+    label = parameter; //just parses in param name
+
+    for (let i = 0; i < items.length; i++) {
+      console.log(`${label} ` + (i + 1) + `: ` + `${items[i]}`);
+    }
+
+},
+};
+
+GroceryStore.displayStock(`Fruits`);
+GroceryStore.displayStock(`Vegetables`);
+
+const Vehicles = { ...GroceryStore, Cars: ['Suzuki', 'Mazda', 'Hyundai'] };
+
+Vehicles.displayStock(`Cars`);
+
+# Reflections
+
+## What were the issues with duplicated code?
+
+- Logic was repeated for both fruits and vegetables. No point when it can be done by a single for loop instead.
+- Labels were linked with the loop they ran in. Bad practice as they should just be parameters that are parsed in when required.
+- Redundant unit tests required if they were to be written.
+- Can't make use of the logic anywhere else in the codebase. Given we now have a class we can create new objects with the spread operator that pull in previous logic. Allowing us to display more items with the same logic.
+
+## How did refactoring improve maintainability?
+
+- The original code had two identical functions for fruits and vegetables, causing duplication.
+- The refactored version uses a dynamic method, `displayStock(parameter)`, inside an object.
+- This allows any category to be handled with the same loop, making it easier to add new categories and update logic in one place.
+- As a result, the code is simpler, easier to expand, and faster to maintain.
