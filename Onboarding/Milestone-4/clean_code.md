@@ -1,26 +1,26 @@
 # Research and summarize the following clean code principles:
 
-# Simplicity
+## Simplicity
 
 -Follow the keep it simple stupid mentality. The easier it is to understand than the easier it is to fix.
 
-# Readability
+## Readability
 
 Write code so it can be understood easily from a first glance. E.g. correct indenting with variable names that follow a consistent format.
 
-# Maintainability
+## Maintainability
 
 -Possibly write own unit tests for code so, if people decide to add features in the future, your tests can be ran to determine if what they added breaks the original code logic.
 
-# Consistency
+## Consistency
 
 -A consistent format allows not only you, but others to write code asynchronously allowing the final code snippets to merge together seamlessly. Ideal for working with global teammembers such as is the case at FocusBear.
 
-# Efficiency
+## Efficiency
 
 -Code is a simple as possible and only optimized if required. This helps your code hit the previous points mentioned. Overengineering simply distracts from the clean code principles.
 
-# messy code
+### messy code
 
 const aBox = {
 i: 0,
@@ -41,7 +41,7 @@ aBox.blah();
 
 -It's not compicated, but it is a really annoying way to print 5 elements inside an array. The object name and method does not correspond to the purpose of the function at all.
 
-# clean code
+### clean code
 
 const aBox = [1,2,3,4,5];
 
@@ -54,12 +54,12 @@ printAboxElements();
 
 # How to run ESlint and Prettier
 
-# Code Formatting & Style Guides
-
 ### Basic commands:
 
 npx eslint . --fix # Lint and auto-fix issues
 npx prettier . --write # Format all files
+
+# Code Formatting & Style Guides
 
 ## Why is code formatting important?
 
@@ -76,3 +76,134 @@ The linter detected:
 ## Did formatting the code make it easier to read?
 
 Yes. Formatting fixed spacing, indentation, and punctuation, making the structure of the code more obvious.
+
+# Naming Variables & Functions
+
+### Variable and Function Naming Best Practices
+
+- Use clear, descriptive names that indicate purpose.
+- Follow consistent naming conventions (e.g., camelCase for variables/functions, PascalCase for classes).
+- Avoid unnecessary abbreviations or single-letter names (except in small, clear scopes like loops).
+- Use verbs for function names to describe the action performed.
+- Use nouns for variables that store data or objects.
+- Keep names concise but meaningful.
+- Avoid repeating context that is already clear from scope.
+- Avoid duplication if the actions required can be done by one function. Just split the actions required that call the previously repeated function.
+
+### Example of unclear code names:
+
+### Bad
+
+let a = 5;
+let b = 10;
+
+function c(x, y) {
+return x + y;
+}
+
+let d = c(a, b);
+
+if (d > 10) {
+console.log("big");
+} else {
+console.log("small");
+}
+
+### Good
+
+let a = 5;
+let b = 10;
+
+function addTwoNumbers(a, n) {
+return a + b;
+}
+
+let result = addTwoNumbers(a, b);
+
+if (result > 10) {
+console.log("Number is larger than 10");
+} else {
+console.log("Number is less than or equal too 10");
+}
+
+# Reflection
+
+## What makes a good variable or function name?
+
+-It must be descripting and, if possible, clearly represent what the purpose of the variable/function is. Also follow cases (e.g. camelCase) if required. The more meaning that can be conveyed the better.
+
+## What issues can arise from poorly named variables?
+
+-Confusion as that what the code does. Making it difficult to follow the clean code principles listed previously.
+--Can result in:
+---Slower dev times.
+---Increased bugs due to confusion.
+---Difficulty in adding to code functionality due to confusion.
+
+## How did refactoring improve code readability?
+
+-Increased code clarity. Even though simple, it is much easier to understand the refactored version vs the original version (due to descriptive variable and function names).
+
+# Writing Small, Focused Functions
+
+## Bad function (from: https://github.com/jbellue/intensify/blob/master/js/intensify.js)
+
+function select_file(input) {
+var files = input.files;
+show_only("msg_box_loading");
+
+if (FileReader && files && files.length) {
+var file_reader = new FileReader();
+file_reader.onload = () => {
+localStorage.image = file_reader.result;
+show_only("msg_box_ready");
+};
+file_reader.readAsDataURL(files[0]);
+} else {
+show_error("&#x2620; Unable to get the image");
+}
+}
+
+# Refactored Functiom
+
+- Moved built-in functions into helper functions (slightly easier to read?)
+- Changed var to const
+
+function showLoading() {
+show_only("msg_box_loading");
+}
+
+function showReady() {
+show_only("msg_box_ready");
+}
+
+function storeImage() {
+localStorage.image = dataResult
+}
+
+function select_file(file) {
+const files = input.files;
+showLoading();
+
+if (FileReader && files && files.length) {
+const file_reader = new FileReader();
+file_reader.onload = () => {
+storeImage(reader.result);
+showReady();
+};
+file_reader.readAsDataURL(files[0]);
+} else {
+show_error("&#x2620; Unable to get the image");
+}
+}
+
+## Why is breaking down functions beneficial?
+
+- Improves readability making the function easier to understand.
+- Testing is also easier as the function has been modularized making writing test for each individual module relatively straightforward. Also aids debugging as well as code maintenance for the same reason.
+
+## How did refactoring improve the structure of the code?
+
+- Removed 3 lines of logic into their own functions (new to JS/programming hence the simplicity of the example)
+- These 3 helper functions are named by their purpose, making code readability even easier.
+- Code is more modular. Easy to expand on the functionality of the helper functions as it isolates any potential bugs if they do occur.
