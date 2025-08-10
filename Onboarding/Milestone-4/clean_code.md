@@ -382,3 +382,71 @@ document.getElementById('error').textContent = 'Could not load data.';
 - The single try/catch reduces the amount of error catches required in the function.
 - Variable names re-written to make sense with what is actually being received by the function.
 - Placing DOM functionality at the end makes the logic flow make more sense then what was initially proposed.
+
+# Research best practices for writing comments and documentation
+
+- Comments should be descriptive
+- Don't over comment
+- Update comments as code changes
+- Complex sections have more detail, possibly block comments than simpler sections
+
+## bad JS function comments (gpt generated):
+
+function processArray(arr) {
+// function to do stuff
+let total = 0; // total
+// loop through array
+for (let i = 0; i < arr.length; i++) {
+// get item
+let item = arr[i]; // item
+// check if number
+if (typeof item === 'number') {
+// add it
+total = total + item; // add
+} else {
+// ignore
+// nothing here
+}
+}
+// return it
+return total; // done
+}
+
+# good JS function comments:
+
+// Calculate the sum of all numeric values in parsed array.
+
+function processArray(arr) {
+
+let total = 0; // total
+// Iterate over each array element.
+
+for (let i = 0; i < arr.length; i++) {
+
+/_
+Numeric values only are added.
+Non-numberic ignored.
+_/
+
+    let item = arr[i]; // item
+    if (typeof item === 'number') {
+      total = total + item; // add
+    }
+
+}
+
+// return sum into total
+return total; // done
+}
+
+# When should you add comments?
+
+- To explain non-obvious logic
+- Explain function, class or module purpose
+- Possibly clarifiy temporary bug workarounds
+- TODO and FIX notes
+
+# When should you avoid comments and instead improve the code?
+
+- Self-explanatory code doesn't need to be commented
+- When the function/module/class can be re-written to be easier to understand rather than over-explaind with comments.
