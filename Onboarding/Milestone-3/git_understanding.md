@@ -74,7 +74,43 @@
 
 Git cherry-pick was confusing. I cherry-picked a commit from a new branch into main, but later when I restored that file using git checkout, I still got the version from the cherry-picked commit—even though I thought the change was already integrated.
 
-# Understand git bisect:
+# Evidence of me using the commands:
+
+851 git add git_understanding.md
+852 git commit-m "Milestone2 - 55"
+853 git commit -m "Milestone2 - 55"
+854 git checkout main -- git_understanding.md
+855 git cherry-pick aNewBranch
+856 git revert 50fd216
+857 git log
+858 git blame git_understanding.md
+859 git checkout main git_understanding.md
+860 git checkout aNewBranch
+861 git add git_understanding.md
+862 git checkout aNewBranch
+863 git commit -m "more changes"
+864 git checkout aNewBranch
+865 git commit
+866 git add ./
+867 git commit
+868 git cherry-pick adfs
+869 git cherry-pick 4e24a49
+870 git push
+871 git cherry-pick 4e24a49
+872 git cherry-pick --continue
+873 git cherry-pick 4e24a49
+874 git checkout main
+875 git cherry-pick 4e24a49
+876 git add git_understanding.md
+877 git cherry-pick --continue
+878 git puish
+879 git push
+880 git checkout git_understanding.md
+881 git add git_understanding.md
+882 git commit -m "Milestone3 - 57"
+883 git push
+
+# Understanding git bisect:
 
 Git bisect evidence:
 ![alt text](image.png)
@@ -91,6 +127,12 @@ Git bisect evidence:
 ### How does it compare to manually reviewing commits?
 
 - It uses a binary search approach, finding the buggy commit quicker than manually searching would. It also automatically checkout's your commits for you, reducing chance of human error.
+
+### Evidence of the commit messages I made:
+
+![alt text](image-3.png)
+
+I edited my test.js file with characters to simulate me working on code. I commited 3 times with the final commit having changes that would result in a ficticious bug. I then used git bisect to mark the good and bad commits and find the commit where the 'bug' was introduced.
 
 # Writing Meaningful Commit Messages
 
