@@ -6,7 +6,7 @@
 
 ### Why does Git separate these two steps?
 
-- Helps you avoid uneseccary commits.
+- Helps you avoid unecessary commits.
 - Allows you to carefully select what will get commited. Don't have to include unecessary junk files if they are any for example.
 - Can also use the staging area to see what is different between what you staged and what you changed (if you made some changes to a staged file and it broke the code for example).
 - Staged files stay staged. If you are working on files and, for whatever reason, forget what files you changed, they will be tracked in the staging area.
@@ -17,6 +17,10 @@
 - When you've made multiple unrelated changes and want to commit them separately. You can stage just one group of changes now and come back to the others later.
 - When you're not done yet but want to save a clean version of certain files.
 - To carefully prepare a commit.
+
+# Own experience reflection:
+
+- I use the Git CLI to stage, unstage and commit changes to files I am working on. I find staging very useful as I can push only the required files to my github repo, nothing unecessary such as configuration files or dot-files that may be require by my IDE.
 
 # Branching & Team Collaboration
 
