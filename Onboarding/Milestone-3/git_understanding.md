@@ -94,6 +94,15 @@ Git bisect evidence:
 
 # Writing Meaningful Commit Messages
 
+# Make three commits in your repo with different commit message styles:
+
+- A vague commit message (e.g., "fixed stuff").
+- An overly detailed commit message.
+- A well-structured commit message.
+
+- These commits can be seen in this screenshot:
+  ![alt text](image-2.png)
+
 ### What makes a good commit message?
 
 - A clear and precise report of what was done and why it was made. Possibly referencing an issue number on the repo.
@@ -111,7 +120,7 @@ Git bisect evidence:
 - Increases the chance of reintroducing old bugs due to lack of context.
 - Slows down onboarding of new team members who rely on commit history to learn the codebase.
 
-This is something I'd like to integrate into the main code base please.
+- e.g. This is something I'd like to integrate into the main code base please.
 
 # Pull Requests
 
@@ -161,3 +170,7 @@ This is something I'd like to integrate into the main code base please.
 - How in large projects such as Node, pull requests are formatted to a high standard whereas in smaller projects pull request quality suffers.
 - There are so many pull requests in large, multi-dev projects, it is obvious why clear requests and issue tracking is extremely important.
 - Short sharp messages if critique is required with evidence of the change/fix made in response.
+
+## My own Pull Request:
+
+![alt text](image-1.png)
