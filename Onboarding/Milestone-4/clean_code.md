@@ -450,3 +450,81 @@ return total; // done
 
 - Self-explanatory code doesn't need to be commented
 - When the function/module/class can be re-written to be easier to understand rather than over-explaind with comments.
+
+# Handling Errors & Edge Cases
+
+## Research Stratergies for handling errors and edge cases in code (include Guard Clauses)
+
+- In JS we can use try/catch operators which try a piece of code and, if the code crashed, can output an error via catch(error) -> console.error(catch). We can also have an else segment that will run regardless if the try/catch operation succeeds or not.
+- Check for null/NaN input from the user before running a segment of code that relies on input that you cannot control. This is effecitvely what guard clauses are.
+- Can have fallback behaviour if correct input isn't present. E.g. if the user doesn't enter a correct ID -> ID ?? (ID: undefined) then it will simply be assigned undefined and the code will still run.
+- Can make use of promises when using try/catch or calling (async) functions so the code takes delays in fetching/retrieving information into account.
+
+### Common JS edge cases (GTP generated):
+
+- [ ] **Falsy values** — Remember: `false`, `0`, `""`, `null`, `undefined`, and `NaN` are all falsy.
+- [ ] **`==` vs `===`** — Use `===` for strict equality (no type coercion).
+- [ ] **`null` vs `undefined`** — `null` is intentional absence; `undefined` means "not assigned".
+- [ ] **Empty arrays/objects** — `[]` and `{}` are truthy but may contain no data.
+- [ ] **Array holes** — Sparse arrays may skip elements (e.g., `[ , , 3 ]`).
+- [ ] **Floating point math** — `0.1 + 0.2 !== 0.3`.
+- [ ] **NaN comparisons** — `NaN !== NaN`; use `Number.isNaN()` instead.
+- [ ] **Mutating vs non-mutating methods** — e.g., `.sort()` mutates, `.map()` doesn’t.
+- [ ] **String/number coercion** — `"5" + 1` → `"51"`, but `"5" - 1` → `4`.
+- [ ] **Object key order** — Numeric keys may be reordered in some cases.
+- [ ] **Shallow vs deep copy** — Spread operator (`{...obj}`) only does shallow copy.
+- [ ] **this binding** — Changes depending on how a function is called.
+- [ ] **Async errors** — Need `.catch()` or `try...catch` with `await` for promises.
+- [ ] **Event loop delays** — `setTimeout(fn, 0)` still waits until the call stack clears.
+
+# Find an existing function that doesn’t properly handle errors or invalid inputs.
+
+### GPT generated bad function:
+
+function fetchUserData(userId) {
+// Make an API call to get user data
+return fetch(`https://api.example.com/users/${userId}`)
+.then(response => response.json()) // assumes it's always valid JSON
+.then(data => {
+// Assume 'data' always has 'name' and 'email'
+console.log(`User: ${data.name} (${data.email})`);
+return data;
+});
+}
+
+# Refactor the function to improve error handling:
+
+const fetchUserData = async (userId) => {
+try {
+const response = await fetch(`https://api.example.com/users/${userId}`);
+if (!response.ok) throw new Error("API failed to respond");
+
+let data;
+try {
+data = await response.json();
+} catch (err) {
+console.error("Garbled data sent from API:", err);
+return;
+}
+
+if (!data || !("name" in data) || !("email" in data)) { //check if data.name and data.email actually exist
+throw new Error("Name and email fields are missing");
+} else {
+console.log(`User: ${data.name} (${data.email})`);
+return data;
+}
+} catch (err) {
+console.error("Fetch error:", err);
+}
+};
+
+# What was the issue with the original code?
+
+- Function assumed the API call would always succeed.
+- Assumed valid JSON will always be returned.
+- JSON will always contain name and email key-value pairs.
+
+# How does handling errors improve reliability?
+
+- Code is more verbose to the programmer, so when testing issues in the API being called are revealed as soon as they happen, allowing the programmer to consult the API itself and not the tested code.
+- Prevents function from continuing with invalid data, preventing further bugs later in the code.

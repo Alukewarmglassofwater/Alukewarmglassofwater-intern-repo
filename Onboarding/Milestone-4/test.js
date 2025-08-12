@@ -139,3 +139,41 @@ async function betterloadUserAndPosts() {
     document.getElementById('error').textContent = 'Could not load data.';
   }
 }
+
+
+
+
+
+
+### GPT generated bad function:
+
+function fetchUserData(userId) {
+// Make an API call to get user data
+return fetch(`https://api.example.com/users/${userId}`)
+.then(response => response.json()) // assumes it's always valid JSON
+.then(data => {
+// Assume 'data' always has 'name' and 'email'
+console.log(`User: ${data.name} (${data.email})`);
+return data;
+});
+}
+
+# Refactor the function to improve error handling:
+
+const fetchUserData = (userID) => {
+try {
+fetch(`https://api.example.com/users/${userId}`)
+if (!response.ok) throw new Error("No API response"); //error if API can't be contacted
+else {
+try {  
+ .then(response => response.json()) //if this fails need a catch for it
+
+    }
+
+console.log(`Retrying API...`)
+
+        }
+
+    }
+
+}
