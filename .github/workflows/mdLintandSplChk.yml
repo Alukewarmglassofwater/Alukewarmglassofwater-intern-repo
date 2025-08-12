@@ -13,14 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Markdown lint
-      - name: markdownlint
-        run: npx --yes markdownlint-cli2 "**/*.md"
+      # Only compute changed Markdown files
+      - uses: tj-actions/changed-files@v45
+        id: changed
+        with:
+          files: |
+            **/*.md
 
-      # Spell check (cspell)
-      - name: cspell
+      # Markdown lint only the changed files
+      - name: markdownlint (changed files)
+        if: steps.changed.outputs.any_changed == 'true'
+        run: npx --yes markdownlint-cli2 ${{ steps.changed.outputs.all_changed_files }}
+
+      # Spell check only the changed files
+      - name: cspell (changed files)
+        if: steps.changed.outputs.any_changed == 'true'
         uses: streetsidesoftware/cspell-action@v6
         with:
-          files: "**/*.md"
-          config: "cspell.json"
+          files: ${{ steps.changed.outputs.all_changed_files }}
+          config: cspell.json
 
