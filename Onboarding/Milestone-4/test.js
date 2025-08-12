@@ -140,11 +140,6 @@ async function betterloadUserAndPosts() {
   }
 }
 
-
-
-
-
-
 ### GPT generated bad function:
 
 function fetchUserData(userId) {
