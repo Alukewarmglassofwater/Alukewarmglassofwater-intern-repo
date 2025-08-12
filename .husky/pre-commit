@@ -1,0 +1,5 @@
+echo "husky: pre-commit is running"
+
+cd "$(git rev-parse --show-toplevel)"
+
+npx lint-staged

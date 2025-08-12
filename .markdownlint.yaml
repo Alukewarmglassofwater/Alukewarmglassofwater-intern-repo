@@ -1,0 +1,31 @@
+# Relaxed markdownlint rules for this repo
+
+# Line length
+MD013: false
+
+# Multiple top-level headings allowed
+MD025: false
+
+# First line doesn't need to be H1
+MD041: false
+
+# Duplicate headings OK when nested under different parents
+MD024:
+  allow_different_nesting: true
+  siblings_only: true
+
+# Trailing punctuation in headings OK
+MD026: false
+
+# Allow inline HTML and bare URLs
+MD033: false
+MD034: false
+
+# Don't enforce strict heading levels or surrounding blank lines/lists
+MD001: false
+MD022: false
+MD032: false
+
+# Don't flag emphasis used as heading
+MD036: false
+
