@@ -160,20 +160,28 @@ return data;
 
 # Refactor the function to improve error handling:
 
-const fetchUserData = (userID) => {
+const fetchUserData = async (userId) => {
 try {
-fetch(`https://api.example.com/users/${userId}`)
-if (!response.ok) throw new Error("No API response"); //error if API can't be contacted
-else {
-try {  
- .then(response => response.json()) //if this fails need a catch for it
+  const response = await fetch(`https://api.example.com/users/${userId}`);
+  if (!response.ok) throw new Error("API failed to respond");
 
+
+  let data;
+  try {
+    data = await response.json();
+  } catch (err) {
+    console.error("Garbled data sent from API:", err);
+    return;
+  }
+
+  if (!data || !("name" in data) || !("email" in data)) { //check if data.name and data.email actually exist
+  throw new Error("Name and email fields are missing");
+  } else {
+      console.log(`User: ${data.name} (${data.email})`);
+      return data;
     }
-
-console.log(`Retrying API...`)
-
-        }
-
-    }
-
+} catch (err) {
+  console.error("Fetch error:", err);
 }
+};
+

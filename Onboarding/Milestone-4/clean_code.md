@@ -528,3 +528,26 @@ console.error("Fetch error:", err);
 
 - Code is more verbose to the programmer, so when testing issues in the API being called are revealed as soon as they happen, allowing the programmer to consult the API itself and not the tested code.
 - Prevents function from continuing with invalid data, preventing further bugs later in the code.
+
+# Writing Unit Tests for Clean Code:
+
+- Catches bugs early
+- Esures software components work corretly
+- Helps catch edge cases
+
+# Choose an testing framework:
+
+- Jest for JS
+
+# Reflection:
+
+## How do unit tests help keep code clean?
+
+- Forces you to write code that is easily teastable if you intend to test against it
+  -- The simpler the function is, the easier it is to write a test for it hence testing helping keep code clean
+- If expansion of the code results in breaking of a unit test then either a bug has been introduced or the functionality of the function has been modified so it doesn't follow the one function one purpouse rule. Helping keep code clean as a result
+
+## What issues did you find while testing?
+
+- Getting ESLint to correctly parse the Jest syntax without errors
+- Jest is particulalry complicated for a beginner. If you output function data with console.log then use jest.spyOn(console, 'log').mockImplemnentation(() => {}); to test against the output is a bit strange. Maybe easier in the future to test against function output and not just what is logged to the console?

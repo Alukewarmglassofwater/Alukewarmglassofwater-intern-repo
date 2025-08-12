@@ -1,0 +1,17 @@
+{
+  "id": 101,
+  "name": "Alice Johnson",
+  "email": "alice.johnson@example.com",
+  "isActive": true,
+  "roles": ["admin", "editor", "contributor"],
+  "profile": {
+    "age": 29,
+    "country": "Australia",
+    "joined": "2023-06-15"
+  },
+  "recentOrders": [
+    { "orderId": "A001", "amount": 250.5, "status": "shipped" },
+    { "orderId": "A002", "amount": 99.99, "status": "pending" },
+    { "orderId": "A003", "amount": 19.95, "status": "cancelled" }
+  ]
+}
