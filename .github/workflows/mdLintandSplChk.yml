@@ -13,23 +13,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Only compute changed Markdown files
+      # Get only the changed Markdown files
       - uses: tj-actions/changed-files@v45
         id: changed
         with:
           files: |
             **/*.md
 
-      # Markdown lint only the changed files
-      - name: markdownlint (changed files)
+      # Lint only what changed
+      - name: markdownlint (changed only)
         if: steps.changed.outputs.any_changed == 'true'
         run: npx --yes markdownlint-cli2 ${{ steps.changed.outputs.all_changed_files }}
 
-      # Spell check only the changed files
-      - name: cspell (changed files)
+      # Spell-check only what changed
+      - name: cspell (changed only)
         if: steps.changed.outputs.any_changed == 'true'
         uses: streetsidesoftware/cspell-action@v6
         with:
           files: ${{ steps.changed.outputs.all_changed_files }}
           config: cspell.json
+
+      - name: No markdown changes
+        if: steps.changed.outputs.any_changed != 'true'
+        run: echo "No changed Markdown files — skipping."
 
