@@ -414,3 +414,4 @@ function printUserData(user, count, maxUsers) {
 - Less duplication, so fixing one thing doesn’t secretly break three others.
 - Pure functions are easy to test, so logic issue get caught earlier.
 - Some test text.
+- Another test.
