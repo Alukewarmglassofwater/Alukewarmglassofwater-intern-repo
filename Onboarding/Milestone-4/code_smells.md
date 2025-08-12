@@ -412,4 +412,4 @@ function printUserData(user, count, maxUsers) {
 
 - Smaller, focused functions mean a smaller search area when something breaks.
 - Less duplication, so fixing one thing doesn’t secretly break three others.
-- Pure functions are easy to test, so logic issue get caught earlier. me mkidn inte seerors.
+- Pure functions are easy to test, so logic issue get caught earlier.
