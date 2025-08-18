@@ -18,8 +18,8 @@
 
 ## What is the difference between docker exec and docker attach?
 
-- Docker exec runs a command on a specific container (`<container name> command`). Creating a new process inside the existing container's main running process.
-- Docker attach connects the CLI to a specified container's initial process. Also multiple connections to the same container are allowed. Its useful as it gives you a live stream to the running process. Not just starts a new process.
+- Docker exec: Runs a new command inside an already running container. This creates a new process that’s separate from the container’s main process. For example: `docker exec -it myapp bash` opens a shell inside the container without affecting the main app process.
+- Docker attach: Connects your terminal directly to the container’s main process (PID 1), sharing its STDIN/STDOUT. This gives you a live stream of what that process is doing. However, if you exit with CTRL+C, it may stop the container because you’re tied to its main process
 
 ## How do you restart a container without losing data?
 
@@ -35,3 +35,11 @@
 - run database queries with `docker exec -it <nest_container> sh -lc "psql -h db -U focusbear -d testDB -c 'SELECT 1;'"` and see if a response comes back
 - Inspect network settings of the running container with `docker inspect <nest_container> --format '{{json .NetworkSettings.Networks}}' | jq`
 - Can increase nest logging to be more verbose in main.ts "const app = await NestFactory.create(AppModule, { logger: ['error','warn','log','debug','verbose'] });"
+
+## Story of a debugging session with docker.
+
+- When I first tried connecting a NestJS container to Postgres, I accidentally attempted to connect to a different database than the one defined in my `docker-compose.yml`. On top of that, I used `localhost` in the connection string. The app logs showed `ECONNREFUSED`, which didn't make sense at the time. Running `docker exec -it postgresDB sh` confirmed postgresDB was running and then `nc -zv localhost 5432` in the docker CLI showed that the postgres service was actually reachable. Further troubleshooting revealred my mistake. In future I will always check database names and command arguments so this confusion can be avoided.
+
+![alt text](image-3.png)
+
+![alt text](image-2.png)
