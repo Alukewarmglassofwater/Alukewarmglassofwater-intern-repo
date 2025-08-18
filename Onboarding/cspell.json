@@ -1,0 +1,14 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["focusbear", "testDB", "postgresDB"],
+  "ignoreWords": [
+    "psql",
+    "myvolume",
+    "mountpoint",
+    "newresource",
+    "healthcheck",
+    "isready",
+    "Singelton"
+  ]
+}
