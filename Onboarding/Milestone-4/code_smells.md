@@ -405,13 +405,15 @@ function printUserData(user, count, maxUsers) {
 # How did refactoring improve the readability and maintainability of the code?
 
 - Allows for an easier understanding of what the code does via all variables having descriptive names for what they represent
-- Breaking a large multi-step function/class into single-purpose multistep functions made it significantly easier to understand what logic was occuring throughout the code. ALso allows for easy debugging since each functional step is now seperated in the code.
-- Allows you to individually turn code secitons on and off by being able to individually call functions. Useful for debugging.
+- Breaking a large multi-step function/class into single-purpose multistep functions made it significantly easier to understand what logic was occurring throughout the code. ALso allows for easy debugging since each functional step is now separated in the code.
+- Allows you to individually turn code sections on and off by being able to individually call functions. Useful for debugging.
 
 # How can avoiding code smells make future debugging easier?
 
 - Smaller, focused functions mean a smaller search area when something breaks.
 - Less duplication, so fixing one thing doesn’t secretly break three others.
 - Pure functions are easy to test, so logic issue get caught earlier.
-- Some test text.
-- Another test.
+
+## A story on how this exercise will influence my coding habits going forward
+
+- Back when my group worked on the arduino c code, the listeningForMessaged() function was horrific and made no sense. It was very difficult to follow what was going on and, if something broke, where this occurred throughout the function. This is why commented lines of code a present throughout the function. It was us attempting to debug what was failing. We didn't remove the uncommented lines of code for fear of breaking the function again. Looking now at the refactored version the code flow is much easier to understand. If only we wrote out code this way initially the entire project would have been much less painful. Furthermore, I will endeavour to follow through on these coding practices as it makes my life easier.
