@@ -2,15 +2,15 @@
 
 ### What is the difference between staging and committing?
 
-- Staging allows you to select files or parts of files you intend to track the changes of. Once git add is ran the files are said to be in the staging area. Commiting is made after you stage files and is a record of the state of the files in the staging area at that specific point in time.
+- Staging allows you to select files or parts of files you intend to track the changes of. Once git add is ran the files are said to be in the staging area. Committing is made after you stage files and is a record of the state of the files in the staging area at that specific point in time.
 
 ### Why does Git separate these two steps?
 
-- Helps you avoid unecessary commits.
-- Allows you to carefully select what will get commited. Don't have to include unecessary junk files if they are any for example.
+- Helps you avoid unnecessary commits.
+- Allows you to carefully select what will get committed. Don't have to include unnecessary junk files if they are any for example.
 - Can also use the staging area to see what is different between what you staged and what you changed (if you made some changes to a staged file and it broke the code for example).
 - Staged files stay staged. If you are working on files and, for whatever reason, forget what files you changed, they will be tracked in the staging area.
-- Can track file changes after staging, therefore can revert to the staged version if unecessary changes were made to the file post-staging.
+- Can track file changes after staging, therefore can revert to the staged version if unnecessary changes were made to the file post-staging.
 
 ### When would you want to stage changes without committing?
 
@@ -20,7 +20,7 @@
 
 # Own experience reflection:
 
-- I use the Git CLI to stage, unstage and commit changes to files I am working on. I find staging very useful as I can push only the required files to my github repo, nothing unecessary such as configuration files or dot-files that may be require by my IDE.
+- I use the Git CLI to stage, unstage and commit changes to files I am working on. I find staging very useful as I can push only the required files to my github repo, nothing unnecessary such as configuration files or dot-files that may be require by my IDE.
 
 # Branching & Team Collaboration
 
@@ -107,7 +107,7 @@ Git cherry-pick was confusing. I cherry-picked a commit from a new branch into m
 875 git cherry-pick 4e24a49
 876 git add git_understanding.md
 877 git cherry-pick --continue
-878 git puish
+878 git push
 879 git push
 880 git checkout git_understanding.md
 881 git add git_understanding.md
@@ -136,7 +136,7 @@ Git bisect evidence:
 
 ![alt text](image-3.png)
 
-I edited my test.js file with characters to simulate me working on code. I commited 3 times with the final commit having changes that would result in a ficticious bug. I then used git bisect to mark the good and bad commits and find the commit where the 'bug' was introduced.
+I edited my test.js file with characters to simulate me working on code. I committed 3 times with the final commit having changes that would result in a fictitious bug. I then used git bisect to mark the good and bad commits and find the commit where the 'bug' was introduced.
 
 # Writing Meaningful Commit Messages
 
@@ -162,7 +162,7 @@ I edited my test.js file with characters to simulate me working on code. I commi
 ### How can poor commit messages cause issues later?
 
 - Makes debugging harder when you don’t know why a change was made.
-- Wastes time searching through commit history to find why a bug has occured.
+- Wastes time searching through commit history to find why a bug has occurred.
 - Increases the chance of reintroducing old bugs due to lack of context.
 - Slows down onboarding of new team members who rely on commit history to learn the codebase.
 
@@ -172,20 +172,26 @@ I edited my test.js file with characters to simulate me working on code. I commi
 
 ### Why are PRs important in a team workflow?
 
-- Pull Requests provide a way for proposed changes to be looked (and bugs catched) by other team members before they are integrated.
+- Pull Requests provide a way for proposed changes to be looked at (and bugs caught) by other team members before they are integrated (peer review).
 - All changes made to the codebase can be seen by others, aiding project transparency.
 - They create a record of what was changed and why.
+- They facilitate collaboration as the team must discuss via PR comments as to what needs to be changed, what went well and steps to resolve the conflict for the code to be merged into the main codebase.
+- Pull requests also facilitate CI/CD checks at the time of the request as to automatically check that code submitted pass the organisations standards regardless if the code is approved to be merged into the main codebase.
+- They protect the main codebase from being damaged by incompatible code, especially when multiple people are working on the same codebase at the same time. They also allow for simpler rollbacks of code versions, since a buggy merge can be reverted to the state before it was merged.
 - I used a pull request to merge the changes of a file in a branch that diverged from my main code. When I approved the request github reported a merge conflict. This taught me how to resolve said merge conflict and how branches interact with the main code base.
 
 ### What makes a well-structured PR?
 
-- A clear and descriptive title that summarizes the change.
+- A clear and descriptive title that summarizes the change. A pull request must integrate one change per merge. If more are added then it becomes difficult to revert code based on what was merged.
 - A detailed description explaining the purpose of the PR, what was changed, and why.
+- Unit integration tests triggered automatically on the submission of the pull request. Checks code is up to a baseline standard before it is reviewed by an assessor. Acts as a guard ensuring time isn't wasted throughout the team.
 - Possibly a reference to a bug/issue proposed on the repository.
 - Evidence of unit tests passing.
 - I asked my supervisor how to format my pull request. I was given below as a result. From this I understand that there is more to pull requests than simply stating what you changed and why it should be integrated, especially when working on a project in the company environment.
 
 # Pull request format for FocusBear:
+
+- I was given the focusbear template and edited it to coincide with the pull request I submitted against my own codebase.
 
 ## Description of change
 
@@ -213,9 +219,9 @@ I edited my test.js file with characters to simulate me working on code. I commi
 
 ### What did you learn from reviewing an open-source PR?
 
-- How in large projects such as Node, pull requests are formatted to a high standard whereas in smaller projects pull request quality suffers.
+- How in large projects such as Node (https://github.com/nodejs/node/commits/main/), pull requests are formatted to a high standard whereas in smaller projects pull request quality suffers.
 - There are so many pull requests in large, multi-dev projects, it is obvious why clear requests and issue tracking is extremely important.
-- Short sharp messages if critique is required with evidence of the change/fix made in response.
+- Noticed that people communicate with short sharp messages in pull request comments. If changes are required in response to a critique, evidence of the change being made is submitted in a comment for the assessor to review detailing what was changed and why.
 
 ## My own Pull Request:
 
