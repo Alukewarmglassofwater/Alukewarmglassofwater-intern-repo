@@ -227,4 +227,4 @@ I edited my test.js file with characters to simulate me working on code. I commi
 
 ![alt text](image-1.png)
 
-A change in main has been made on the same line as done in another branch
+Final change
