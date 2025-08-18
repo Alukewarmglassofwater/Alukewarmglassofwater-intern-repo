@@ -4,3 +4,4 @@
 
 - Some text
 - Some more text so I can run a test commit
+- Adding more text to test git hook
