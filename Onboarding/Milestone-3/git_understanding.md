@@ -226,3 +226,5 @@ I edited my test.js file with characters to simulate me working on code. I commi
 ## My own Pull Request:
 
 ![alt text](image-1.png)
+
+A change in main has been made on the same line as done in another branch
