@@ -32,7 +32,7 @@
 
 - Review the AI-generated output critically—did it require editing or fact-checking?
 -- In this case it did require fact-checking as the output was incorrect. Image included. 
-![alt text](image.png)
+![alt text](image2.png)
 I learn't that you cannot always trust the output AI gives you even if it is adamant it is correct. Ai has the potential to hallucinate and do its best to convince you its output is correct even when it isn't.
 
  Document one best practice you will follow when using AI tools at Focus Bear.

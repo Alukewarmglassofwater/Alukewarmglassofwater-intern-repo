@@ -67,6 +67,6 @@
 -- I will minimise the data I have access too and only request what is necessary for me to complete the tasks at hand
 
 # Screenshot proof:
-![alt text](image.png) - Device lock screen settings
+![alt text](image3.png) - Device lock screen settings
 
-![alt text](image-1.png) - Use of a VPN
+![alt text](image4.png) - Use of a VPN

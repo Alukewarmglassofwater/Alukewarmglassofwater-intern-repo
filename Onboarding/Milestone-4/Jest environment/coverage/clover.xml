@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1754963108198" clover="3.2.0">
-  <project timestamp="1754963108198" name="All files">
+<coverage generated="1755484862757" clover="3.2.0">
+  <project timestamp="1755484862757" name="All files">
     <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="17" coveredelements="17" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
     <file name="unittesting.js" path="/home/nukk/Alukewarmglassofwater-intern-repo/Onboarding/Milestone-4/Jest environment/unittesting.js">
       <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

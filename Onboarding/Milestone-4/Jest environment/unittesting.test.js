@@ -1,4 +1,5 @@
-/* eslint-env node, jest */
+/* eslint-env jest */
+
 const { GroceryStore, Vehicles } = require('./unittesting'); //load GroceryStore and Vehicles function calls
 
 describe('displayStock', () => {
