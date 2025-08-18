@@ -31,9 +31,8 @@ jobs:
         uses: streetsidesoftware/cspell-action@v6
         with:
           files: ${{ steps.changed.outputs.all_changed_files }}
-          config: cspell.json
+          config: ./cspell.json # path relative to repo root
 
       - name: No markdown changes
         if: steps.changed.outputs.any_changed != 'true'
         run: echo "No changed Markdown files — skipping."
-
