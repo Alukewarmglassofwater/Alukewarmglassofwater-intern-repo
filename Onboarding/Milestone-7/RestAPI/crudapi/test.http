@@ -1,0 +1,6 @@
+POST http://localhost:3000/newRoute/retNumberRoute
+Content-Type: application/json
+
+{
+  "value": 40
+}
