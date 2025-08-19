@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateCrudmoduleDto } from './dto/create-crudmodule.dto';
-import { UpdateCrudmoduleDto } from './dto/update-crudmodule.dto';
+import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
+import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
 
-import { TestDto } from './dto/create-a-test.dto';
+import { TestDto } from '../dto/create-a-test.dto';
 
 @Injectable()
 export class CrudmoduleService {

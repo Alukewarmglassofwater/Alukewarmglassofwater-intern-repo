@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 //typeform imports
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Item } from './entities/item.entity';
+import { Item } from '../entities/item.entity';
 
 export interface CreateItemDto {
   name: string;

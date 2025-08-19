@@ -27,4 +27,7 @@ export class Item {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @Column({ type: 'text', nullable: true })
+  anotherCollumn?: string;
 }

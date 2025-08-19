@@ -7,11 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { CreateCrudmoduleDto } from './dto/create-crudmodule.dto';
-import { UpdateCrudmoduleDto } from './dto/update-crudmodule.dto';
+import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
+import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
 //test dto import as well as the service
 import { ATestService } from './crudmodule.service';
-import { TestDto } from './dto/create-a-test.dto';
+import { TestDto } from '../dto/create-a-test.dto';
 import { ParseIntPipe } from '@nestjs/common';
 import { CrudmoduleService } from './crudmodule.service';
 import { returnInt } from './crudmodule.service';

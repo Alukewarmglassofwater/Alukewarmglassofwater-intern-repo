@@ -14,7 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'focusbear',
       database: 'testDB',
       autoLoadEntities: true, // auto-detects entities across project
-      synchronize: true, // auto-creates tables
+      synchronize: false, // for migration testing
     }),
     CrudmoduleModule,
   ],

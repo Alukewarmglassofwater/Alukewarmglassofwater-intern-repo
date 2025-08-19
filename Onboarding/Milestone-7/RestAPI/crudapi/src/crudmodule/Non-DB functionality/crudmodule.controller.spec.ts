@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CrudmoduleController } from './crudmodule.controller';
+import { CrudmoduleController } from './Non-DB functionality/crudmodule.controller';
 import { CrudmoduleService } from './crudmodule.service';
 
 describe('CrudmoduleController', () => {

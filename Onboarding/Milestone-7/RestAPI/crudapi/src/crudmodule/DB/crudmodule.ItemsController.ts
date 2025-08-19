@@ -10,8 +10,8 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
-import { CreateCrudmoduleDto } from './dto/create-crudmodule.dto';
-import { UpdateCrudmoduleDto } from './dto/update-crudmodule.dto';
+import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
+import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
 
 @Controller('items')
 export class ItemsController {
