@@ -17,28 +17,28 @@ services:
       timeout: 3s
       retries: 10
 
-  app:
-    build:
-      context: ./NestJSProject/test-project # points to the folder with your Dockerfile
-      dockerfile: Dockerfile
-    container_name: TestNestJSApplication
-    environment:
-      NODE_ENV: development
-      PORT: '3000'
-      DB_HOST: db
-      DB_PORT: '5432'
-      DB_USER: focusbear
-      DB_PASS: focusbear
-      DB_NAME: testDB
-    ports:
-      - '3000:3000'
-    depends_on:
-      db:
-        condition: service_healthy
-    command: npm run start:dev
-    volumes:
-      - ./NestJSProject/test-project:/app # mount your code
-      - /app/node_modules # keep container's node_modules
+  # app:
+  #   build:
+  #     context: ./NestJSProject/test-project # points to the folder with your Dockerfile
+  #     dockerfile: Dockerfile
+  #   container_name: TestNestJSApplication
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: '3000'
+  #     DB_HOST: db
+  #     DB_PORT: '5432'
+  #     DB_USER: focusbear
+  #     DB_PASS: focusbear
+  #     DB_NAME: testDB
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   command: npm run start:dev
+  #   volumes:
+  #     - ./NestJSProject/test-project:/app # mount your code
+  #     - /app/node_modules # keep container's node_modules
 
 volumes:
   postgres_data:
