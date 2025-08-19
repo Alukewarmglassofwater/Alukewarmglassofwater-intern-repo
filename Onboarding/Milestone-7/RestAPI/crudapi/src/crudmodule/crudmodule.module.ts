@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ATestService, CrudmoduleService } from './crudmodule.service';
-import { CrudmoduleController, retNumber } from './crudmodule.controller';
+import { ATestService, CrudmoduleService, returnInt } from './crudmodule.service';
+import { CrudmoduleController, RetItemViaNum, RetNumber } from './crudmodule.controller';
 
 @Module({
-  controllers: [CrudmoduleController, retNumber],
-  providers: [CrudmoduleService, ATestService],
+  controllers: [CrudmoduleController, RetNumber, RetItemViaNum],
+  providers: [CrudmoduleService, ATestService, returnInt],
 })
 export class CrudmoduleModule {}

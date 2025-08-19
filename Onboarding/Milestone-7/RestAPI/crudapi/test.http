@@ -1,6 +1,9 @@
-POST http://localhost:3000/newRoute/retNumberRoute
+POST http://localhost:3000/RetNumberController/retNumberRoute
 Content-Type: application/json
 
 {
   "value": 40
 }
+###
+
+GET http://localhost:3000/RetItemController/1
