@@ -41,3 +41,14 @@ DELETE http://localhost:3000/items/1
 
 ### GET ONE (expect 404)
 GET http://localhost:3000/items/4
+
+
+
+###
+POST http://localhost:3000/jobs/enqueue
+Content-Type: application/json
+
+{
+  "userId": 42,
+  "payload": "test payload"
+}

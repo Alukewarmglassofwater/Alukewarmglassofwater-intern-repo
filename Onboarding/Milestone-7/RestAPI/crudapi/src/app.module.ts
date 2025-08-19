@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CrudmoduleModule } from './crudmodule/crudmodule.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BullModule } from '@nestjs/bullmq';
+import { JobsModule } from './jobs/jobs.module';
 
 @Module({
   imports: [
@@ -16,7 +18,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true, // auto-detects entities across project
       synchronize: false, // for migration testing
     }),
+
+    // Queues (global Redis connection)
+    BullModule.forRoot({
+      connection: {
+        host: '127.0.0.1',
+        port: 6379,
+      },
+    }),
+
     CrudmoduleModule,
+    JobsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
