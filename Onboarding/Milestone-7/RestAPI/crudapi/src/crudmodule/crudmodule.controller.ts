@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CreateCrudmoduleDto } from './dto/create-crudmodule.dto';
 import { UpdateCrudmoduleDto } from './dto/update-crudmodule.dto';
 //test dto import as well as the service
@@ -28,7 +36,10 @@ export class CrudmoduleController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCrudmoduleDto: UpdateCrudmoduleDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCrudmoduleDto: UpdateCrudmoduleDto,
+  ) {
     return this.crudmoduleService.update(+id, updateCrudmoduleDto);
   }
 
@@ -38,9 +49,9 @@ export class CrudmoduleController {
   }
 }
 
-
 @Controller('RetNumberController') //route prefix
-export class RetNumber {  //new class name
+export class RetNumber {
+  //new class name
   constructor(private readonly aTestService: ATestService) {} //constructor injection for the service
 
   @Post('retNumberRoute') //send back to user
@@ -54,8 +65,8 @@ export class RetItemViaNum {
   constructor(private readonly returnInt: returnInt) {}
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) { //takes string and parses it as an int
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    //takes string and parses it as an int
     return this.returnInt.getItemviaNum(id);
-    }
-
   }
+}

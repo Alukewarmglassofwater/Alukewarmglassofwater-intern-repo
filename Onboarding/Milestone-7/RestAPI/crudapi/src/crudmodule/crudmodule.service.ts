@@ -4,7 +4,6 @@ import { UpdateCrudmoduleDto } from './dto/update-crudmodule.dto';
 
 import { TestDto } from './dto/create-a-test.dto';
 
-
 @Injectable()
 export class CrudmoduleService {
   create(createCrudmoduleDto: CreateCrudmoduleDto) {
@@ -30,24 +29,24 @@ export class CrudmoduleService {
 
 @Injectable()
 export class ATestService {
-  create(dto: TestDto) {  //use dto input 
-      return { message: `You sent the number ${dto.value}\n` };
+  create(dto: TestDto) {
+    //use dto input
+    return { message: `You sent the number ${dto.value}\n` };
   }
 }
 
 @Injectable()
 export class returnInt {
   private items = [
-    { id: 1, name: 'Test item 1'},
-    { id: 2, name: 'Test item 2'},
+    { id: 1, name: 'Test item 1' },
+    { id: 2, name: 'Test item 2' },
   ];
 
   getItemviaNum(id: number) {
-    const item = this.items.find(i => i.id === id);
+    const item = this.items.find((i) => i.id === id);
     if (!item) {
-      throw new NotFoundException(`Item with id ${id} not present in database`)
+      throw new NotFoundException(`Item with id ${id} not present in database`);
     }
     return item;
   }
-
 }

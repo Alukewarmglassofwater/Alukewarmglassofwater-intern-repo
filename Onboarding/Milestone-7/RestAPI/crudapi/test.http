@@ -7,3 +7,37 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/RetItemController/1
+
+
+###
+
+### CREATE
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+  "name": "Alpha",
+  "description": "first",
+  "quantity": 2
+}
+
+### LIST
+GET http://localhost:3000/items
+
+### GET ONE
+GET http://localhost:3000/items/1
+
+### UPDATE
+PATCH http://localhost:3000/items/1
+Content-Type: application/json
+
+{
+  "name": "Alpha v2",
+  "quantity": 10
+}
+
+### DELETE
+DELETE http://localhost:3000/items/1
+
+### GET ONE (expect 404)
+GET http://localhost:3000/items/4
