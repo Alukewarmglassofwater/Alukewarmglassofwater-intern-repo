@@ -1,5 +1,6 @@
 // src/crudmodule/entities/item.entity.ts
 // Mapping for class -> SQL queries
+import { Exclude, Expose } from 'class-transformer';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -19,12 +20,14 @@ export class Item {
   @Column({ type: 'text', nullable: true })
   description?: string;
 
+  @Exclude()
   @Column({ type: 'int', default: 0 })
   quantity: number;
 
   @CreateDateColumn()
   createdAt: Date;
 
+  @Expose({ name: 'ThisisEXPOSEWORKING' })
   @UpdateDateColumn()
   updatedAt: Date;
 

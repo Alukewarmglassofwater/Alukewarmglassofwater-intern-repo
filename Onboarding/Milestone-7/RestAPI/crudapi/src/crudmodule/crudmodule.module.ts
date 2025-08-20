@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import {
   ATestService,
   CrudmoduleService,
@@ -15,6 +15,8 @@ import { Item } from './entities/item.entity';
 import { ItemsService } from './DB/items.service';
 
 import { ItemsController } from './DB/crudmodule.ItemsController';
+import { LoggerMiddleware } from 'middleware/basiclogger.middleware';
+
 @Module({
   imports: [TypeOrmModule.forFeature([Item])], //lets you grab items in the database
   controllers: [
@@ -25,4 +27,10 @@ import { ItemsController } from './DB/crudmodule.ItemsController';
   ],
   providers: [CrudmoduleService, ATestService, returnInt, ItemsService],
 })
-export class CrudmoduleModule {}
+export class CrudmoduleModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'RetItemController/:id', method: RequestMethod.GET });
+  }
+}

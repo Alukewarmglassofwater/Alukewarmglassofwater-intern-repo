@@ -16,6 +16,14 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - '6379:6379' # expose Redis on default port
+    volumes:
+      - redis_data:/data
+    command: ['redis-server', '--appendonly', 'yes'] # enable persistence
 
   # app:
   #   build:
@@ -42,3 +50,4 @@ services:
 
 volumes:
   postgres_data:
+  redis_data:

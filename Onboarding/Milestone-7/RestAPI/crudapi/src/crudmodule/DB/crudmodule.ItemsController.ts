@@ -8,12 +8,16 @@ import {
   Param,
   Body,
   ParseIntPipe,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
 import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
+import { Item } from '../entities/item.entity';
 
 @Controller('items')
+@UseInterceptors(ClassSerializerInterceptor)
 export class ItemsController {
   constructor(private readonly items: ItemsService) {}
 
@@ -28,7 +32,9 @@ export class ItemsController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    const item = await this.items.findOne(id);
+    console.log('is Item instance?', item instanceof Item); // should be true
     return this.items.findOne(id);
   }
 

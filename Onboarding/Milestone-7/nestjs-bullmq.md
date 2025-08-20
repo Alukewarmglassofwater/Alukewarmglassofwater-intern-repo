@@ -51,3 +51,28 @@ docker run -p 6379:6379 --name redis -d redis:7-alpine
 - Potential maintenenace tasks.
 - Synchronizing data with other APIs,
 - Potentially limit API polling rates for other services.
+
+## Notes
+
+- BullMQ is a Node.js library for managing job queues.
+- Redis is a bacbone storage engine for BullMQ
+  - Handles notifications
+  - Atomic job addition/removal
+    - Many producers/workes can connect to the same Redis intance and queues will be allocated automatically.
+    - No too workes will grab the same job at once.
+
+# Full Flow (step-by-step)
+
+- Client makes a POST request → POST /jobs/enqueue { userId, payload }.
+- JobsController receives it, passes data to JobsProducer.
+- JobsProducer → enqueues a "heavy-task" job into Redis.
+- BullMQ (via Redis) notifies any workers subscribed to "simple".
+- JobsProcessor picks it up, runs the heavy logic, logs start & finish.
+- Job result & state (waiting → active → completed/failed) is tracked in Redis.
+
+# Analogy
+
+- JobsController → Reception desk.
+- JobsProducer → Clerk who puts the task in the inbox.
+- Redis → The inbox / job board where tasks wait.
+- JobsProcessor → Worker in the back room who takes tasks and completes them
