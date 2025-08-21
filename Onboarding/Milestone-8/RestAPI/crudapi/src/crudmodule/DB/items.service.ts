@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Item } from '../entities/item.entity';
+import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
 
 export interface CreateItemDto {
   name: string;
@@ -50,5 +51,14 @@ export class ItemsService {
   async remove(id: number): Promise<void> {
     const result = await this.repo.delete(id);
     if (!result.affected) throw new NotFoundException(`Item ${id} not found`);
+  }
+
+  // src/crudmodule/DB/items.service.ts
+  async createTestEncryptItem(body: CreateCrudmoduleDto): Promise<Item> {
+    const entity = new Item();
+    entity.name = body.name;
+    entity.description = body.description ?? '';
+    entity.quantity = body.quantity ?? 0;
+    return this.repo.save(entity);
   }
 }

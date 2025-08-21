@@ -51,3 +51,20 @@ export class ItemsController {
     return this.items.remove(id);
   }
 }
+
+@Controller('testEncrypt')
+export class TestItemController {
+  constructor(private readonly items: ItemsService) {}
+
+  @Post('insert')
+  async createTest(@Body() body: CreateCrudmoduleDto) {
+    try {
+      console.log('[testEncrypt] body =', body); // sanity
+      return await this.items.createTestEncryptItem(body);
+    } catch (e: any) {
+      console.error('💥 Insert failed:', e?.message || e);
+      if (e?.stack) console.error(e.stack);
+      throw e;
+    }
+  }
+}
