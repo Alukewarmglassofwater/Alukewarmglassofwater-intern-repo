@@ -28,6 +28,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
       status = exception.getStatus();
       const res = exception.getResponse();
       message = (res as any).message || exception.message;
+    } else if (typeof (exception as any).statusCode === 'number') {
+      // handle fastify plugin errors correctly
+      status = (exception as any).statusCode;
+      message = (exception as any).message || message;
     }
 
     this.logger.error(
