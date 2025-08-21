@@ -9,6 +9,7 @@ import { LoggerModule } from 'nestjs-pino';
 import { HttpExceptionFilter } from 'filters/http-exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { envSchema } from 'env.validation';
+import { AuthModule } from 'auth/auth.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { envSchema } from 'env.validation';
 
     CrudmoduleModule,
     JobsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, HttpExceptionFilter],

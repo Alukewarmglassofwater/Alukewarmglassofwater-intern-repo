@@ -10,11 +10,14 @@ import {
   ParseIntPipe,
   UseInterceptors,
   ClassSerializerInterceptor,
+  UseGuards,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
 import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
 import { Item } from '../entities/item.entity';
+import { JwtAuthGuard } from 'auth/jwt-auth.guard';
+import { AdminOnlyGuard } from 'auth/admin-only.guard';
 
 @Controller('items')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -22,11 +25,13 @@ export class ItemsController {
   constructor(private readonly items: ItemsService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard, AdminOnlyGuard)
   create(@Body() dto: CreateCrudmoduleDto) {
     return this.items.create(dto);
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard, AdminOnlyGuard)
   findAll() {
     return this.items.findAll();
   }
