@@ -13,3 +13,30 @@ export class AddTwoNumbersService {
     return a + b;
   }
 }
+
+@Injectable()
+export class Counter {
+  private _value: number;
+
+  constructor(initial = 0) {
+    this._value = initial;
+  }
+
+  get value(): number {
+    return this._value;
+  }
+
+  increment(step = 1): number {
+    this._value += step;
+    return this._value;
+  }
+
+  decrement(step = 1): number {
+    this._value -= step;
+    return this._value;
+  }
+
+  reset(): void {
+    this._value = 0;
+  }
+}
