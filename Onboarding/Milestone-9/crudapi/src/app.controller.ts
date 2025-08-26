@@ -1,5 +1,10 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { AddTwoNumbersService, AppService } from './app.service';
+import {
+  AddTwoNumbersService,
+  AppService,
+  SubtractTwoNumbersService,
+} from './app.service';
+// import { string } from 'joi';
 
 @Controller()
 export class AppController {
@@ -18,5 +23,17 @@ export class AddTwoNumbersController {
   @Get('add')
   AddTwoNumbers(@Query('a') a: string, @Query('b') b: string): number {
     return this.AddTwoNumbersService.add(Number(a), Number(b));
+  }
+}
+
+@Controller('moreMath')
+export class SubtractTwoNumbersController {
+  constructor(
+    private readonly SubtractTwoNumbersService: SubtractTwoNumbersService,
+  ) {}
+
+  @Get('subtract')
+  SubtractTwoNumbers(@Query('a') a: string, @Query('b') b: string): number {
+    return this.SubtractTwoNumbersService.sub(Number(a), Number(b));
   }
 }

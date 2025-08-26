@@ -22,7 +22,9 @@
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
     "seed": "node --require ts-node/register src/crudmodule/DB/seed.ts",
-    "dev": "concurrently -k -n BACKEND,FRONTEND -c blue,green \"npm run start:dev\" \"cd frontend && npm run dev\""
+    "dev": "concurrently -k -n BACKEND,FRONTEND -c blue,green \"npm run start:dev\" \"cd frontend && npm run dev\"",
+    "test:backend": "jest --config jest.config.cjs",
+    "test:frontend": "jest --config jest.config.cjs"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",

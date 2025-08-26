@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AddTwoNumbersController, AppController } from './app.controller';
-import { AddTwoNumbersService, AppService } from './app.service';
+import {
+  AddTwoNumbersService,
+  AppService,
+  SubtractTwoNumbersService,
+} from './app.service';
 import { CrudmoduleModule } from './crudmodule/crudmodule.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bullmq';
@@ -56,7 +60,16 @@ import { AuthModule } from 'auth/auth.module';
     JobsModule,
     AuthModule,
   ],
-  controllers: [AppController, AddTwoNumbersController],
-  providers: [AppService, HttpExceptionFilter, AddTwoNumbersService],
+  controllers: [
+    AppController,
+    AddTwoNumbersController,
+    SubtractTwoNumbersService,
+  ],
+  providers: [
+    AppService,
+    HttpExceptionFilter,
+    AddTwoNumbersService,
+    SubtractTwoNumbersService,
+  ],
 })
 export class AppModule {}

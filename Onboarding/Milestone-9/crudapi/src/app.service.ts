@@ -40,3 +40,10 @@ export class Counter {
     this._value = 0;
   }
 }
+
+@Injectable()
+export class SubtractTwoNumbersService {
+  sub(a: number, b: number): number {
+    return a - b;
+  }
+}

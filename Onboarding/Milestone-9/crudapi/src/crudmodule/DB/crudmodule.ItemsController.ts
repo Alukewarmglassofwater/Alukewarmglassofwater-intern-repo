@@ -16,8 +16,8 @@ import { ItemsService } from './items.service';
 import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
 import { UpdateCrudmoduleDto } from '../dto/update-crudmodule.dto';
 import { Item } from '../entities/item.entity';
-import { JwtAuthGuard } from 'auth/jwt-auth.guard';
-import { AdminOnlyGuard } from 'auth/admin-only.guard';
+import { JwtAuthGuard } from '../../../auth/jwt-auth.guard';
+import { AdminOnlyGuard } from '../../../auth/admin-only.guard';
 
 @Controller('items')
 @UseInterceptors(ClassSerializerInterceptor)
