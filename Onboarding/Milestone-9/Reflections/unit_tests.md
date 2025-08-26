@@ -82,21 +82,24 @@
 
 ## How do Redux tests differ from React components tests?
 
+- React component tests is UI changes/interactions.
+- Redux test check the state of the website and resulting logic.
+
 - What you assert
-  - Redux: state transitions — given (prevState, action) ⇒ nextState.
-  - React: rendered UI/behavior — what’s on screen after user interactions.
+  - Redux: state transitions: given (prevState, action) ⇒ nextState.
+  - React: rendered UI/behavior: what’s on screen after user interactions.
 
 - Level of isolation
   - Redux: pure reducer tests (no DOM), or store+thunk with network mocked.
-  - React: render components, simulate clicks/typing, query DOM (screen.findBy…).
+  - React: render components, simulate clicks/typing, query DOM
 
 - Tools & mocks
-  - Redux: configureStore, dispatch, mock API layer (fetch/axios).
-  - React: @testing-library/react, user-event, mock Redux hooks or provider if needed.
+  - Redux: configureStore, dispatch, mock API layer.
+  - React: @testing-library/react, user-events, mock Redux hooks (small functions that let react function components interact with Redux store) to see if they're working correctly or providers if needed.
 
 - Signals of success
-  - Redux: status flips (idle→loading→succeeded/failed), state shape/data correct.
-  - React: correct text/aria roles visible, buttons enabled/disabled, error messages shown.
+  - Redux: status changes (idle→loading→succeeded/failed), state shape/data correct.
+  - React: correct output from functions, buttons enabled/disabled, error messages thrown.
 
 - Failure modes caught
   - Redux: wrong reducer logic, bad error handling, flaky async/cancellation.
@@ -105,3 +108,9 @@
 - Speed
   - Redux: fastest (pure functions); store integration still quick.
   - React: slower (DOM involved), but validates real user experience.
+
+RULE OF THUMB
+
+Redux = “did the state machine update right?”
+React = “does the UI show the right thing and respond to users?”
+NestJS = “does the server return the right stuff?”
