@@ -87,7 +87,7 @@ export class RolesPermissionsGuard implements CanActivate {
 
     if (rolesOk && permsOk) return true;
 
-    // Helpful error for debugging (omit lists in prod if you prefer)
+    // Helpful error for debugging
     throw new ForbiddenException({
       message: 'Insufficient privileges',
       required: {

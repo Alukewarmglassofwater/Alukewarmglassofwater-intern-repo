@@ -15,7 +15,7 @@ import { Item } from './entities/item.entity';
 import { ItemsService } from './DB/items.service';
 
 import { ItemsController } from './DB/crudmodule.ItemsController';
-import { LoggerMiddleware } from 'middleware/basiclogger.middleware';
+import { LoggerMiddleware } from '../../middleware/basiclogger.middleware';
 import { TestItemController } from './DB/crudmodule.ItemsController';
 
 @Module({

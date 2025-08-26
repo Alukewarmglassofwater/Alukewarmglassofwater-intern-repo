@@ -35,7 +35,7 @@ describe('ItemsService (unit)', () => {
 
   describe('create', () => {
     it('creates with defaults (description undefined, quantity 0) and saves', async () => {
-      const dto = { name: 'alpha' }; // no desc/qty given
+      const dto = { name: 'alpha' };
       const entity = {
         id: undefined,
         name: 'alpha',

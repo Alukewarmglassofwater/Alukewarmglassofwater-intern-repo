@@ -10,10 +10,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bullmq';
 import { JobsModule } from './jobs/jobs.module';
 import { LoggerModule } from 'nestjs-pino';
-import { HttpExceptionFilter } from 'filters/http-exception.filter';
+import { HttpExceptionFilter } from '../filters/http-exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { envSchema } from 'env.validation';
-import { AuthModule } from 'auth/auth.module';
+import { envSchema } from '../env.validation';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -60,11 +60,7 @@ import { AuthModule } from 'auth/auth.module';
     JobsModule,
     AuthModule,
   ],
-  controllers: [
-    AppController,
-    AddTwoNumbersController,
-    SubtractTwoNumbersService,
-  ],
+  controllers: [AppController, AddTwoNumbersController],
   providers: [
     AppService,
     HttpExceptionFilter,
