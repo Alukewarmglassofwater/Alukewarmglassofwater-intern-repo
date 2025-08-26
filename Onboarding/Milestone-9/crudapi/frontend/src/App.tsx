@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import { HelloMessage } from './components/HelloMessage';
 import { Testbutton } from './components/HelloMessage';
+import HnItem from '././components/fetchfromanAPI';
 
 import './App.css';
 
@@ -39,6 +40,12 @@ function App() {
       <div>
         <p>
           <Testbutton onClick={() => console.log('clicked')} />{' '}
+        </p>
+      </div>
+      <div>
+        <p>
+          <h1>Hacker News Item</h1>
+          <HnItem itemId={8863} />
         </p>
       </div>
     </>

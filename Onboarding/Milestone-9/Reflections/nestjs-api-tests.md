@@ -29,9 +29,9 @@
 - Faster than running actual authentication calculations in tests (depending how complicated your authentication plan is of course).
 - Easily force testing against different role types via mocking them without actually dealing with the associated tokens/setup.
 
-## How can you structure API tests to cover both success and faliure cases?
+## How can you structure API tests to cover both success and failure cases?
 
-- Hit every route in your test. From each route then split into a success and faliure test path. Potentially add further faliure paths as to test edge cases.
+- Hit every route in your test. From each route then split into a success and failure test path. Potentially add further failure paths as to test edge cases.
   - Can structure variable invalid table entries to see how they behave when being tested and if your routes/services handle them correctly.
   - Test for Header content, returned body is of the correct shape, make sure functions are called by the correct callee, etc...
   - For each endpoint, write tests covering: success (200/201), validation error (400), unauthenticated (401), not found (404), conflict/duplicate (409), and unexpected server error (500)

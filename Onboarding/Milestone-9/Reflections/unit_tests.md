@@ -36,3 +36,30 @@
 - I found it difficult to understand how getByRole works. I now understand it is using the accessible name property tied to the element. In the case of the button the accessible name is 'hello' given this is what is rendered inside the button. The button looks for if "hello" is present inside a button and if so attempts the userEvent.click function on the button. It then waits to see if the onClick function has been called once. If so test has passed.
 - Also learnt how to create a user event which mirrors user input more closely than fireEvent.
   E.g.: - userEvent.click does pointerdown -> mousedown -> focus -> pointerup -> mouseup -> click (events that would actually occur in the browser when the user clicks. More robust as a result.) - fireEvent.click just fires the click event
+
+# Mocking API Calls in Jest reflection:
+
+## Test working against API call and verifies correct behaviour
+
+![alt text](image-14.png)
+
+## Why is it important to mock API calls in tests?
+
+- Don't need to have the actual API present to test if code is working correctly.
+- Can simulate timeouts, non-200 returns, broken JSON etc. Hard to recreate these in the wild.
+- Don't need to actually request broken information from the third-party.
+  - Allows you to prepare for the event the API may malfunction.
+
+## What are some common pitfalls when testing asynchronous code?
+
+- Don’t assert before the async update finishes.
+  - Use await screen.findBy... or await waitFor(...) instead of getBy....
+- Don’t forget to await promises or events. Can cause false positive/negatives when testing.
+- Don’t mix fake timers with promises without flushing queues.
+- Don’t leave mocks/timers/global state 'used' between tests.
+- Don’t mock the wrong layer (or double-mock).
+- Don’t test implementation details.
+- Assert user-visible behavior and side effects, not internal calls/fields.
+- Don’t depend on real time, randomness, or timezone.
+- Don’t ignore failure paths.
+- Cover non-200 responses, timeouts, network rejects, and malformed JSON data.
