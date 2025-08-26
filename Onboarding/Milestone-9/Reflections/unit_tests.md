@@ -15,7 +15,7 @@
 
 - I am having a difficult time remembering Jest syntax and how the tests actually work. The Jest framework is so streamlined it is difficult to understand what is actually happening under the hood. E.g. the expect() service must run the service, parse in specified values then check the return against a specified output. The more I play with the framework the more it makes sense however at a first glance it appeared unintuitive.
 
-# Testing React Componenst with Jest & React testing library:
+# Testing React Components with Jest & React testing library:
 
 ## Message renders correctly and onclick works as expected
 
@@ -63,3 +63,45 @@
 - Don’t depend on real time, randomness, or timezone.
 - Don’t ignore failure paths.
 - Cover non-200 responses, timeouts, network rejects, and malformed JSON data.
+
+# Testing Redux with Jest reflection:
+
+## Testing simple Redux slice
+
+![alt text](image-15.png)
+
+## Testing asynch redux slice
+
+![alt text](image-16.png)
+
+## What was the most challenging part of testing Redux?
+
+- Mapping the async lifecycle and how it relates into reducers.
+- Mocking async correctly - stubbing fetch, handling AbortSignals, and awaiting state updates.
+- Jest setup confusion, jsdom vs node, ts-jest/babel-jest, .test.tsx vs .test.ts. etc.
+
+## How do Redux tests differ from React components tests?
+
+- What you assert
+  - Redux: state transitions — given (prevState, action) ⇒ nextState.
+  - React: rendered UI/behavior — what’s on screen after user interactions.
+
+- Level of isolation
+  - Redux: pure reducer tests (no DOM), or store+thunk with network mocked.
+  - React: render components, simulate clicks/typing, query DOM (screen.findBy…).
+
+- Tools & mocks
+  - Redux: configureStore, dispatch, mock API layer (fetch/axios).
+  - React: @testing-library/react, user-event, mock Redux hooks or provider if needed.
+
+- Signals of success
+  - Redux: status flips (idle→loading→succeeded/failed), state shape/data correct.
+  - React: correct text/aria roles visible, buttons enabled/disabled, error messages shown.
+
+- Failure modes caught
+  - Redux: wrong reducer logic, bad error handling, flaky async/cancellation.
+  - React: wrong rendering, wiring to Redux/selectors, UI not reflecting state.
+
+- Speed
+  - Redux: fastest (pure functions); store integration still quick.
+  - React: slower (DOM involved), but validates real user experience.
