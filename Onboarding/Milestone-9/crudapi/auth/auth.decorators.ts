@@ -7,8 +7,8 @@ export const META_REQUIRE_ALL_ROLES = 'authz:reqAllRoles';
 export const META_REQUIRE_ALL_PERMS = 'authz:reqAllPerms';
 
 export function Roles(
-  roles: string[] | string,
-  options?: { requireAll?: boolean },
+  roles: string[] ing,
+  options?: { requireAll| str?: boolean },
 ) {
   const value = Array.isArray(roles) ? roles : [roles];
   return applyDecorators(
