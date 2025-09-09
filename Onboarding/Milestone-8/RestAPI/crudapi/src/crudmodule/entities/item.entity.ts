@@ -18,7 +18,6 @@ export class Item {
   @Column({ length: 200 })
   name: string;
 
-  // <-- THIS WAS MISSING: you had the decorator but no property line
   @Column({
     type: 'text',
     nullable: true,

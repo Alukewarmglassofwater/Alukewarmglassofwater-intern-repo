@@ -25,7 +25,7 @@ Content-Type: application/json
 GET http://localhost:3000/items
 
 ### GET ONE
-GET http://localhost:3000/items/27
+GET http://localhost:3000/items/4
 
 ### UPDATE
 PATCH http://localhost:3000/items/1
@@ -70,14 +70,15 @@ GET http://localhost:3000/items
 
 ###
 
+GET http://localhost:3000/items/whoami
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE3NTY3ODE2MzcsImV4cCI6MTc1Njc4NTIzNywiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIn0.r5oIeGc8mRy6dUog-k2ozQQFZ4cDZLVyOXYCGvz5aOo
+###
 GET http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImh0dHBzOi8veW91cmFwcC5leGFtcGxlLmNvbS9yb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3NTU3NTc4ODcsImV4cCI6MTc1NTc3MjI4N30.69iqBgSOUmj41B9Ms46ybYYY5CFwOGfHgzgKORHv5sQ
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE3NTY3ODE2MzcsImV4cCI6MTc1Njc4NTIzNywiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIn0.r5oIeGc8mRy6dUog-k2ozQQFZ4cDZLVyOXYCGvz5aOo
 ###
 
 POST http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImh0dHBzOi8veW91cmFwcC5leGFtcGxlLmNvbS9yb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3NTU3NTc4ODcsImV4cCI6MTc1NTc3MjI4N30.69iqBgSOUmj41B9Ms46ybYYY5CFwOGfHgzgKORHv5sQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjEyMyIsImh0dHBzOi8veW91cmFwcC5leGFtcGxlLmNvbS9yb2xlcyI6WyJhZG1pbiJdLCJhdXRob3JpemF0aW9uIjp7InJvbGVzIjpbImFkbWluIl19LCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3NTY3ODEyMjEsImV4cCI6MTc1Njc4NDgyMSwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIn0.UFYHT69ZnnYQbRlIQRnEd5JCIq8s7gpOihgR4KY1aAQ
 Content-Type: application/json
 
 {
@@ -88,4 +89,30 @@ Content-Type: application/json
 ###
  //Non-admin token [user]
 GET http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC8iLCJhdWQiOiJhcGk6Ly9kZWZhdWx0IiwiaHR0cHM6Ly95b3VyYXBwLmV4YW1wbGUuY29tL3JvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzU1NzU4NDYxLCJleHAiOjE3NTU3NjIwNjF9.5XjhlD5MLkTDWED44b07FnBZoVjjBRB3KJ_rn6F6phM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjEyMyIsImh0dHA6Ly9sb2NhbGhvc3QvIjpbImFkbWluIl0sImlhdCI6MTc1Njc3NTkwNywiZXhwIjoxNzU2NzkwMzA3LCJhdWQiOiJhcGk6Ly9kZWZhdWx0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC8ifQ.YrsnE3MOKln2grSgoRyZpvIO5TPw7oaon1rURescKDI
+
+
+
+node -e "const jwt=require('jsonwebtoken');
+const ns=process.env.AUTH0_ROLES_CLAIM_NS||'https://yourapp.example.com/roles';
+const payload={ sub:'admin123', [ns]:['user'], authorization:{roles:['user']}, roles:['user'] };
+const token=jwt.sign(payload, process.env.JWT_SECRET||'dev-secret', {
+  algorithm:'HS256', issuer:'http://localhost/', audience:'api://default', expiresIn:'1h'
+});
+console.log(token)"
+
+
+node -e "const jwt=require('jsonwebtoken');
+const payload={ sub:'admin123', roles:['admin'] };
+const token=jwt.sign(payload, process.env.JWT_SECRET||'dev-secret', {
+  algorithm:'HS256', issuer:'http://localhost/', audience:'api://default', expiresIn:'1h'
+});
+console.log(token)"
+
+
+node -e "const jwt=require('jsonwebtoken');
+const payload={ sub:'user123', roles:['user'] };
+const token=jwt.sign(payload, process.env.JWT_SECRET||'dev-secret', {
+  algorithm:'HS256', issuer:'http://localhost/', audience:'api://default', expiresIn:'1h'
+});
+console.log(token)"

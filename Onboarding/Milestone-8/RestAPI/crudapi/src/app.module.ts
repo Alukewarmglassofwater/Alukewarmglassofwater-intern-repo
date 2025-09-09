@@ -28,8 +28,10 @@ import { AuthModule } from 'auth/auth.module';
         username: cfg.get<string>('DB_USER'),
         password: cfg.get<string>('DB_PASS'),
         database: cfg.get<string>('DB_NAME'),
-        autoLoadEntities: true,
-        synchronize: false,
+        schema: 'public',
+        autoLoadEntities: true, // <- picks up Item from your feature module
+        synchronize: true, // <- turn ON to (re)create tables from entities
+        logging: ['schema', 'error'], // <- see CREATE TABLE ... at startup
       }),
     }),
     // Queues (global Redis connection)

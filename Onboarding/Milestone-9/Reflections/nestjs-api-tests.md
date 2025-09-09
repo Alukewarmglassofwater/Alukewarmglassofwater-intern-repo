@@ -8,7 +8,7 @@
 
 # Integration test mock via java web token (JWT)
 
-![alt text](image-13.png)
+![alt text](image-13.png)c
 
 # Reflection
 

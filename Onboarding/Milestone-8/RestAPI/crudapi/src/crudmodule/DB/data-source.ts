@@ -10,9 +10,10 @@ const AppDataSource = new DataSource({
   username: 'focusbear',
   password: 'focusbear',
   database: 'testDB',
+  schema: 'public',
   entities: [Item], // or ['src/**/*.entity.ts']
   migrations: ['src/migrations/*.ts'],
-  synchronize: false, // no sync
+  synchronize: true, // no sync
   logging: true,
 });
 

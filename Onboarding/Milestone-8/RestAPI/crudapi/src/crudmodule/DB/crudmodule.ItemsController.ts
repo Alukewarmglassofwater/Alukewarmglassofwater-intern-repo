@@ -11,6 +11,7 @@ import {
   UseInterceptors,
   ClassSerializerInterceptor,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateCrudmoduleDto } from '../dto/create-crudmodule.dto';
@@ -30,10 +31,23 @@ export class ItemsController {
     return this.items.create(dto);
   }
 
+  @Get('whoami')
+  @UseGuards(JwtAuthGuard)
+  whoAmI(@Req() req) {
+    return req.user;
+  }
+
   @Get()
   @UseGuards(JwtAuthGuard, AdminOnlyGuard)
-  findAll() {
-    return this.items.findAll();
+  async findAll() {
+    try {
+      console.log('[items.findAll] hit');
+      return await this.items.findAll();
+    } catch (e: any) {
+      console.error('💥 items.findAll failed:', e?.message || e);
+      if (e?.stack) console.error(e.stack);
+      throw e;
+    }
   }
 
   @Get(':id')

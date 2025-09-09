@@ -2,7 +2,7 @@
 
 ![alt text](image-9.png)
 
-# Mocking TypeORM respository in a service
+# Mocking TypeORM repository in a service
 
 ![alt text](image-10.png)
 
